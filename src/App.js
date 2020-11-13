@@ -1,7 +1,16 @@
+import Navbar from "./components/Navbar";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
+import { BrowserRouter as Router } from "react-router-dom";
+
 function App() {
   return (
     <>
-      <h1>Rolling Game Store</h1>
+      <Router>
+        <Navbar />
+        <Main />
+        <Footer />
+      </Router>
     </>
   );
 }
