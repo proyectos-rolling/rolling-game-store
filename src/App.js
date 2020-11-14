@@ -8,6 +8,7 @@ function App() {
     <>
       <Router>
         <Navbar />
+        <h1>alo</h1>
         <Main />
         <Footer />
       </Router>
