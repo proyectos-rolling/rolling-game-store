@@ -10,7 +10,7 @@ const GameCard = ({ game }) => {
         <Card.Body>
           <Card.Title>{game.name}</Card.Title>
           <Card.Text>{game.description}</Card.Text>
-          <Card.Link href="#">ver más...</Card.Link>
+          <Card.Link href="#" className="text-white">ver más...</Card.Link>
         </Card.Body>
       </Card>
     </Col>
