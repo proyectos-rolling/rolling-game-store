@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
-import Row from "react-bootstrap/Row";
+import GameCards from "./games/GameCards"
 
 const Main = () => {
   return (
@@ -46,15 +46,13 @@ const Main = () => {
         </Carousel.Item>
       </Carousel>
       <Container>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta maxime
-          voluptatibus vitae nesciunt ipsum omnis, placeat laborum voluptate
-          suscipit, iure incidunt accusantium. Fugit sed ipsa minus eos est
-          provident facilis!
-        </p>
+        <h1>
+          Juegos
+        </h1>
+        <GameCards />
       </Container>
     </div>
   );
-}
+};
 
-export default Main
+export default Main;
