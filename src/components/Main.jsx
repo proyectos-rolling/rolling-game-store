@@ -5,9 +5,10 @@ import GameCards from "./games/GameCards"
 
 const Main = () => {
   const [games, setGames] = useState([]);
+  const root_url = "https://rolling-game-store-backend.herokuapp.com/api";
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/games/active")
+    fetch(`${root_url}/games/active`)
       .then((res) => res.json())
       .then((json) => {
         setGames(json);
