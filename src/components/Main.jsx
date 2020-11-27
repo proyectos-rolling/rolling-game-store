@@ -1,20 +1,8 @@
-import React, {useEffect, useState} from "react";
 import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
-import GameCards from "./games/GameCards"
+import GameCards from "./games/GameCards";
 
-const Main = () => {
-  const [games, setGames] = useState([]);
-  const root_url = "https://rolling-game-store-backend.herokuapp.com/api";
-
-  useEffect(() => {
-    fetch(`${root_url}/games/active`)
-      .then((res) => res.json())
-      .then((json) => {
-        setGames(json);
-      })
-      .catch((error) => console.error("Hubo un error en el fetch: ", error));
-  }, []);
+const Main = ({games}) => {
 
   return (
     <div className="flex-grow-1">
@@ -30,9 +18,7 @@ const Main = () => {
               />
               <Carousel.Caption>
                 <h3>{game.name}</h3>
-                <p>
-                  {game.description}
-                </p>
+                <p>{game.description}</p>
               </Carousel.Caption>
             </Carousel.Item>
           ))}
