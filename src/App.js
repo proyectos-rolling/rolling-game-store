@@ -21,8 +21,9 @@ function App() {
     <>
       <Router>
         <Navbar games={games} />
+        <h1>hi</h1>
         <Main games={games} />
-        <Footer />
+        <Footer/>
       </Router>
     </>
   );
