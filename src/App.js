@@ -20,6 +20,7 @@ function App() {
   return (
     <>
       <Router>
+        <Navbar games={games} />
         <Main games={games} />
         <Footer />
       </Router>

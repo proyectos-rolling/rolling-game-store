@@ -3,8 +3,9 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
+import Search from "./games/Search";
 
-const Sidebar = () => {
+const Sidebar = ({games}) => {
   return (
     <Navbar bg="primary" expand="lg">
       <Navbar.Brand as={Link} to="/">
@@ -37,6 +38,7 @@ const Sidebar = () => {
           </Nav.Link>
         </Nav>
         <Nav>
+          <Search games={games} />
           <NavDropdown title="Login" id="basic-nav-dropdown" alignRight>
             <NavDropdown.Item href="#action/3.1">Login form</NavDropdown.Item>
             <NavDropdown.Divider />
