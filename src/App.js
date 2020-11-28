@@ -22,7 +22,7 @@ function App() {
       <Router>
         <Navbar games={games} />
         <Main games={games} />
-        <Footer />
+        <Footer/>
       </Router>
     </>
   );
