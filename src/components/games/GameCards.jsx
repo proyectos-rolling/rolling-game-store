@@ -3,10 +3,11 @@ import GameCard from "./GameCard";
 import Row from "react-bootstrap/Row";
 
 const GameCards = ({ games }) => {
+  const gamesToShowInMain = 4;
 
   return (
     <Row>
-      {games.map((game) => (
+      {games.slice(0, gamesToShowInMain).map((game) => (
         <GameCard game={game} key={game._id} />
       ))}
     </Row>
