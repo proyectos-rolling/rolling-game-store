@@ -5,7 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import Search from "./games/Search";
 
-const Sidebar = ({games}) => {
+const Sidebar = ({ games }) => {
   return (
     <Navbar bg="primary" expand="lg">
       <Navbar.Brand as={Link} to="/">
