@@ -13,7 +13,7 @@ import Nosotros from "./components/Nosotros";
 
 function App() {
   const [games, setGames] = useState([]);
-  const root_url = "https://rolling-game-store-backend.herokuapp.com/api";
+  const root_url = process.env.REACT_APP_API_ROOT_URL;
 
   useEffect(() => {
     fetch(`${root_url}/games/active`)
