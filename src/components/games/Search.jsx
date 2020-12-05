@@ -33,7 +33,7 @@ const Search = ({ games }) => {
           placeholder="Enter a game name..."
           value={query}
           onChange={handleChange}
-          autocomplete="off"
+          autoComplete="off"
         />
       </form>
       <ListGroup
