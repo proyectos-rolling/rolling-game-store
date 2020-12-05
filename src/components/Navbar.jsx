@@ -4,10 +4,11 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import Search from "./games/Search";
+import './css/navbar.css'
 
 const Sidebar = ({ games }) => {
   return (
-    <Navbar bg="primary" expand="lg">
+    <Navbar className="custom" expand="lg">
       <Navbar.Brand as={Link} to="/">
         <img
           alt=""
