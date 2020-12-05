@@ -34,7 +34,7 @@ function App() {
             <Registro />
           </Route>
           <Route path="/contacto" >
-            <Contacto />
+            <Contacto rootUrl={root_url}/>
           </Route>
           <Route path="/servicios" >
             <Servicios />
