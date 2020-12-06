@@ -4,8 +4,9 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
+import es from "react-phone-input-2/lang/es.json";
 
-const Contacto = ({ rootUrl }) => {
+const Contact = ({ rootUrl }) => {
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -70,8 +71,11 @@ const Contacto = ({ rootUrl }) => {
           <PhoneInput
             inputClass="w-100 w-lg-50 form-control-lg"
             country={"ar"}
-            localization={"es"}
-            masks={{ ar: " (...) ... - ...." }}
+            placeholder="+54"
+            localization={es}
+            enableAreaCodes={true}
+            masks={{ar: "(....) . ......."}}
+            enableAreaCodeStretch
             value={data.phone}
             onChange={(phone) => setData({ ...data, phone })}
           />
@@ -107,4 +111,4 @@ const Contacto = ({ rootUrl }) => {
   );
 };
 
-export default Contacto;
+export default Contact;

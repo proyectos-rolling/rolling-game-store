@@ -4,7 +4,7 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Registro from "./components/Registro";
-import Contacto from "./components/Contacto";
+import Contact from "./components/contact/Contact";
 import Servicios from "./components/Servicios";
 import Conocenos from "./components/Conocenos";
 import Tienda from "./components/Tienda";
@@ -34,7 +34,7 @@ function App() {
             <Registro />
           </Route>
           <Route path="/contacto" >
-            <Contacto rootUrl={root_url}/>
+            <Contact rootUrl={root_url}/>
           </Route>
           <Route path="/servicios" >
             <Servicios />
