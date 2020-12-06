@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import RequestResult from "./RequestResult";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -10,10 +11,14 @@ const Contact = ({ rootUrl }) => {
   const [data, setData] = useState({
     name: "",
     email: "",
-    phone: "",
+    phone: "54",
     comment: "",
     whatsapp: false,
   });
+
+  const [loading, setloading] = useState(false);
+  const [completed, setCompleted] = useState(false);
+  const [responseMessage, setResponseMessage] = useState("")
 
   const handleChange = (e) => {
     try {
@@ -30,14 +35,36 @@ const Contact = ({ rootUrl }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setloading(true)
     fetch(`${rootUrl}/contact`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
       },
       body: JSON.stringify(data),
-    }).catch((error) => console.error("Hubo un error en el fetch: ", error));
+    })
+      .then((response) => {
+        if(response.ok){
+          setData({
+            name: "",
+            email: "",
+            phone: "54",
+            comment: "",
+            whatsapp: false,
+          });
+        }
+        return response.json()
+      })
+      .then((json) => {
+        setResponseMessage(json.msg)
+        setloading(false)
+        setCompleted(true)
+        setTimeout(() => {
+          setCompleted(false);
+          setResponseMessage("")
+        }, 5000);
+      })
+      .catch((error) => {console.error("Hubo un error en el fetch: ", error)});
   };
 
   return (
@@ -46,6 +73,7 @@ const Contact = ({ rootUrl }) => {
         <Form.Group controlId="name">
           <Form.Label>Nombre (Opcional)</Form.Label>
           <Form.Control
+            value={data.name}
             type="text"
             placeholder="Ingresá tu nombre"
             size="lg"
@@ -55,6 +83,7 @@ const Contact = ({ rootUrl }) => {
         <Form.Group controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
+            value={data.email}
             type="email"
             placeholder="Ingresá tu email"
             size="lg"
@@ -71,10 +100,10 @@ const Contact = ({ rootUrl }) => {
           <PhoneInput
             inputClass="w-100 w-lg-50 form-control-lg"
             country={"ar"}
-            placeholder="+54"
+            placeholder="54"
             localization={es}
             enableAreaCodes={true}
-            masks={{ar: "(....) . ......."}}
+            masks={{ ar: "(....) . ......." }}
             enableAreaCodeStretch
             value={data.phone}
             onChange={(phone) => setData({ ...data, phone })}
@@ -86,6 +115,7 @@ const Contact = ({ rootUrl }) => {
         <Form.Group controlId="whatsapp" size="lg">
           <Form.Check
             type="checkbox"
+            checked={data.whatsapp}
             label="Marcá esto si preferís que nos contactemos por whatsapp"
             onChange={handleChange}
           />
@@ -94,6 +124,7 @@ const Contact = ({ rootUrl }) => {
         <Form.Group controlId="comment" size="lg">
           <Form.Label>Comentario</Form.Label>
           <Form.Control
+            value={data.comment}
             as="textarea"
             type="textarea"
             placeholder="Dejanos tu comentario o tu consulta"
@@ -107,6 +138,8 @@ const Contact = ({ rootUrl }) => {
           Submit
         </Button>
       </Form>
+      {loading && <h2 className="text-center pt-5">Enviando...</h2>}
+      {completed && <RequestResult msg={responseMessage} />}
     </Container>
   );
 };
