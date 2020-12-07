@@ -41,7 +41,7 @@ const Search = ({ games }) => {
         variant="flush"
       >
         {filterGames(query).map((game) => (
-          <ListGroup.Item>{game.name}</ListGroup.Item>
+          <ListGroup.Item key= {game._id} >{game.name}</ListGroup.Item>
         ))}
       </ListGroup>
     </>

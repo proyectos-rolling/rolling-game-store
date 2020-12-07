@@ -21,7 +21,7 @@ function App() {
         setGames(json);
       })
       .catch((error) => console.error("Hubo un error en el fetch: ", error));
-  }, []);
+  }, [root_url]);
   return (
     <>
       <Router>

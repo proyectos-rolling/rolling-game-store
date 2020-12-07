@@ -10,7 +10,7 @@ const Main = ({games}) => {
         {games
           .filter((game) => game.featured)
           .map((game) => (
-            <Carousel.Item>
+            <Carousel.Item key={game._id}>
               <img
                 className="d-block w-100"
                 src={`images/${game.images.banner_image_url}`}
@@ -28,7 +28,7 @@ const Main = ({games}) => {
         {games
           .filter((game) => game.discount > 0)
           .map((game) => (
-            <p>
+            <p key={game._id}>
               {game.name} {game.discount * 100}% OFF!!!
             </p>
           ))}
