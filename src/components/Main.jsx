@@ -1,6 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
 import GameCards from "./games/GameCards";
+import './css/main.css'
 
 const Main = ({games}) => {
 
@@ -16,7 +17,7 @@ const Main = ({games}) => {
                 src={`images/${game.images.banner_image_url}`}
                 alt={game.name}
               />
-              <Carousel.Caption>
+              <Carousel.Caption className="carruselbackground">
                 <h3>{game.name}</h3>
                 <p>{game.description}</p>
               </Carousel.Caption>
