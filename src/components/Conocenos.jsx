@@ -2,8 +2,8 @@ import React from 'react'
 
 const Conocenos = () => {
     return (
-        <div>
-            Este es conocenos
+        <div className="container">
+            Este es conocenos perro
         </div>
     )
 }
