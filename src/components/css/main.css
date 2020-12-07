@@ -1,6 +1,8 @@
 body{
-    background-color: #eec0c6;
-    background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
+    background-color: #20bf55;
+    background-image: linear-gradient( #ffffff 2%, #0fcbfa 74%);
+    
+
     }
 .carruselbackground{
     background-color: rgba(7, 7, 7, 0.308);;
