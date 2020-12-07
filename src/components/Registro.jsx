@@ -13,7 +13,6 @@ const Registro = () => {
     const root_url = process.env.REACT_APP_API_ROOT_URL;
 
     const handleInputChange = (event) => {
-        console.log(event.target.value);
         setDatos({
             ...datos,
             [event.target.name]: event.target.value
@@ -21,7 +20,6 @@ const Registro = () => {
     }
     const enviarDatos = (event) => {
         event.preventDefault();
-        console.log(datos);
         saveDatos();
     }
     const saveDatos = () => {
@@ -33,7 +31,7 @@ const Registro = () => {
             body: JSON.stringify(datos),
         })
             .then((res) => res.json())
-            .then((result) => console.log(result))
+            .then((result) => console.log(result))//usar en el alert 
             .catch((err) => console.log('error'))
     };
 
@@ -46,6 +44,7 @@ const Registro = () => {
                     <Form.Control type="text"
                         placeholder="Nombre"
                         name="name"
+                        required
                         onChange={handleInputChange}
                     />
                 </Form.Group>
@@ -53,9 +52,10 @@ const Registro = () => {
                 <Form.Group controlId="mail">
                     <Form.Label >Email</Form.Label>
                     <Form.Control
-                        type="mail"
+                        type="email"
                         placeholder="Ingrese el mail"
                         name="email"
+                        required
                         onChange={handleInputChange}
                     />
                 </Form.Group>
@@ -66,6 +66,7 @@ const Registro = () => {
                         type="password"
                         placeholder="Ingrese password"
                         name="password"
+                        required
                         onChange={handleInputChange}
                     />
                 </Form.Group>
