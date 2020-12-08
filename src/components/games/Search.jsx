@@ -42,8 +42,8 @@ const Search = ({ games }) => {
         variant="flush"
       >
         {filterGames(query).map((game) => (
-          <Link to={"/juegos/"+game._id}>
-            <ListGroup.Item key= {game._id} >{game.name}</ListGroup.Item>
+          <Link to={"/juegos/" + game._id} key={game._id}>
+            <ListGroup.Item>{game.name}</ListGroup.Item>
           </Link>
         ))}
       </ListGroup>

@@ -11,11 +11,6 @@ const GameDescription = ({ games }) => {
     LS.Add("gamesCart", game._id);
   };
 
-  const delItem = (e) => {
-      e.preventDefault();
-      LS.Delete("gamesCart", e.target.delete.value);
-  }
-
   return (
     <div>
       <p>{game.name}</p>

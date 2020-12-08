@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import { BrowserRouter as Router, Route, Switch, useParams } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Registro from "./components/Registro";
 import Contact from "./components/contact/Contact";
 import Servicios from "./components/Servicios";
