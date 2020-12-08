@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
+import {Link} from "react-router-dom"
 
 const GameCard = ({ game }) => {
   return (
@@ -14,7 +15,7 @@ const GameCard = ({ game }) => {
           <Card.Title>{game.name}</Card.Title>
           <Card.Text>{game.description}</Card.Text>
           {game.categories.length !== 0 && <Card.Text>Tags: {game.categories.join(", ")}</Card.Text>}
-          <Card.Link href="#" className="text-white">
+          <Card.Link as={Link} to={"/juegos/"+game._id} className="text-white">
             ver más...
           </Card.Link>
         </Card.Body>
