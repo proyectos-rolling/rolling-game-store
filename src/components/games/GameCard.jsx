@@ -4,8 +4,8 @@ import Col from "react-bootstrap/Col";
 
 const GameCard = ({ game }) => {
   return (
-    <Col sm={6}>
-      <Card bg="dark" text="white">
+    <Col sm={6} className="mt-3 mb-3">
+      <Card bg="dark" text="white" className="h-100 p-2 mt-3">
         <Card.Img
           variant="top"
           src={`images/${game.images.poster_image_url}`}
