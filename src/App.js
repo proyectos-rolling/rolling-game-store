@@ -52,6 +52,9 @@ function App() {
           <Route path="/nosotros">
             <Nosotros />
           </Route>
+          <Route>
+            <h1>404 Not found</h1>
+          </Route>
         </Switch>
         <Footer />
       </Router>
