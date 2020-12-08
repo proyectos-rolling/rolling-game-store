@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
+import {Link} from "react-router-dom"
 
 const Search = ({ games }) => {
   const [query, setQuery] = useState("");
@@ -41,7 +42,9 @@ const Search = ({ games }) => {
         variant="flush"
       >
         {filterGames(query).map((game) => (
-          <ListGroup.Item key= {game._id} >{game.name}</ListGroup.Item>
+          <Link to={"/juegos/"+game._id}>
+            <ListGroup.Item key= {game._id} >{game.name}</ListGroup.Item>
+          </Link>
         ))}
       </ListGroup>
     </>
