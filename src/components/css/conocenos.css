@@ -3,5 +3,16 @@
         border-radius: 15px;
     }
 
-   
+
+    #meetteam {
+        text-align: center;
+        font-size: 4vw;
+        font-weight: 400;
+        background-color: rgba(0, 0, 0, 0.835);
+        color: #fff;
+        display: block;
+        padding: .5em;
+        border-radius: 7px;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
     

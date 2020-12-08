@@ -1,8 +1,12 @@
 body {
-    background: linear-gradient(-45deg, #6bdff3, #dfdede, #81e0f1, #ffffff);
+    background: linear-gradient(315deg,#0cbaba 0%, #380036 74%);
     background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    animation: gradient 10s ease infinite;
 }
+
+
+
+
 
 @keyframes gradient {
     0% {
@@ -17,4 +21,12 @@ body {
 }
 .carruselbackground{
     background-color: rgba(7, 7, 7, 0.479);;
+    padding: 3px;
 }
+
+p,h1{
+    color: white;
+    font-size: 1em;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
