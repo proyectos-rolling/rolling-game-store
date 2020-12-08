@@ -30,23 +30,26 @@ function App() {
           <Route path="/" exact>
             <Main games={games} />
           </Route>
-          <Route path="/registro" >
+          <Route path="/registro">
             <Registro />
           </Route>
-          <Route path="/contacto" >
-            <Contact rootUrl={root_url}/>
+          <Route path="/contacto">
+            <Contact rootUrl={root_url} />
           </Route>
-          <Route path="/servicios" >
+          <Route path="/servicios">
             <Servicios />
           </Route>
-          <Route path="/conocenos" >
+          <Route path="/conocenos">
             <Conocenos />
           </Route>
-          <Route path="/tienda" >
+          <Route path="/tienda">
             <Tienda />
           </Route>
-          <Route path="/nosotros" >
+          <Route path="/nosotros">
             <Nosotros />
+          </Route>
+          <Route>
+            <h1>404 Not found</h1>
           </Route>
         </Switch>
         <Footer />
