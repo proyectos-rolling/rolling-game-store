@@ -1,9 +1,20 @@
-body{
-    background-color: #20bf55;
-    background-image: linear-gradient( #ffffff 2%, #0fcbfa 74%);
-    
+body {
+    background: linear-gradient(-45deg, #6bdff3, #dfdede, #81e0f1, #ffffff);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
 
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
     }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 .carruselbackground{
-    background-color: rgba(7, 7, 7, 0.308);;
+    background-color: rgba(7, 7, 7, 0.479);;
 }
