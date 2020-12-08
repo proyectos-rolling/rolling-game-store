@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
 import es from "react-phone-input-2/lang/es.json";
+import './contacto.css'
 
 const Contact = ({ rootUrl }) => {
   const [data, setData] = useState({
@@ -68,7 +69,7 @@ const Contact = ({ rootUrl }) => {
   };
 
   return (
-    <Container className="py-5">
+    <Container className="py-5 formutext">
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="name">
           <Form.Label>Nombre (Opcional)</Form.Label>
@@ -91,7 +92,7 @@ const Contact = ({ rootUrl }) => {
             onChange={handleChange}
           />
           <Form.Text className="text-muted">
-            No te vamos a manadar spam!
+            No te vamos a mandar spam!
           </Form.Text>
         </Form.Group>
 
