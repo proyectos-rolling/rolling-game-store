@@ -4,13 +4,10 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import Search from "./games/Search";
+import CartMenu from "./CartMenu"
 import "./css/navbar.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
-const cartIcon = <FontAwesomeIcon icon={faShoppingCart} />;
-
-const Sidebar = ({ games }) => {
+const Sidebar = ({ games, cart }) => {
   return (
     <Navbar className="custom" expand="lg">
       <Navbar.Brand as={Link} to="/" className="mr-auto">
@@ -53,9 +50,7 @@ const Sidebar = ({ games }) => {
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>
-      <Nav.Link as={Link} to="/tienda">
-        <h4 className="mt-1 mb-1">{cartIcon}</h4>
-      </Nav.Link>
+      <CartMenu cart={cart}/>
     </Navbar>
   );
 };

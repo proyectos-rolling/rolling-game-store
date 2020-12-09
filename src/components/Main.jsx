@@ -3,7 +3,7 @@ import Carousel from "react-bootstrap/Carousel";
 import GameCards from "./games/GameCards";
 import './css/main.css'
 
-const Main = ({games}) => {
+const Main = ({games, addItem}) => {
 
   return (
     <div className="flex-grow-1">
@@ -34,7 +34,7 @@ const Main = ({games}) => {
             </p>
           ))}
         <h1>Juegos</h1>
-        <GameCards games={games} />
+        <GameCards games={games} addItem={addItem} />
       </Container>
     </div>
   );

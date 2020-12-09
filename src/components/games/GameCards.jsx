@@ -2,13 +2,13 @@ import React from "react";
 import GameCard from "./GameCard";
 import Row from "react-bootstrap/Row";
 
-const GameCards = ({ games }) => {
+const GameCards = ({ games, addItem }) => {
   const gamesToShowInMain = 6;
 
   return (
     <Row>
       {games.slice(0, gamesToShowInMain).map((game) => (
-        <GameCard game={game} key={game._id} />
+        <GameCard game={game} addItem={addItem} key={game._id} />
       ))}
     </Row>
   );
