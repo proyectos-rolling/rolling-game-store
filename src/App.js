@@ -9,11 +9,29 @@ import Servicios from "./components/Servicios";
 import Conocenos from "./components/Conocenos";
 import Tienda from "./components/Tienda";
 import Nosotros from "./components/Nosotros";
-import GameDescription from "./components/games/gameDescription"
+import Cart from "./components/Cart";
+import GameDescription from "./components/games/gameDescription";
+import * as LS from "./helpers/LSmanager";
 
 function App() {
   const [games, setGames] = useState([]);
+  const [cart, setCart] = useState(LS.Get("gamesCart"));
   const root_url = process.env.REACT_APP_API_ROOT_URL;
+
+  const deleteFromCart = (game) => {
+    setCart(cart.filter((item) => item._id !== game._id));
+  };
+
+  const addItem = (e,game) => {
+    e.preventDefault();
+    if(cart.filter(item=>item._id===game._id).length===0){//solo agrego al carrito si no está el juego
+      setCart([...cart,game]);
+    }
+  };
+
+  useEffect(() => {
+    LS.Set("gamesCart", cart);
+  }, [cart]);
 
   useEffect(() => {
     fetch(`${root_url}/games/active`)
@@ -26,10 +44,10 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar games={games} />
+        <Navbar games={games} cart={cart} />
         <Switch>
           <Route path="/" exact>
-            <Main games={games} />
+            <Main games={games} addItem={addItem} cart={cart} />
           </Route>
           <Route path="/registro">
             <Registro />
@@ -46,8 +64,11 @@ function App() {
           <Route path="/tienda">
             <Tienda />
           </Route>
+          <Route path="/carrito">
+            <Cart cart={cart} deleteFromCart={deleteFromCart} />
+          </Route>
           <Route path="/juegos/:gameId">
-            <GameDescription games={games} />
+            <GameDescription games={games} addItem={addItem} />
           </Route>
           <Route path="/nosotros">
             <Nosotros />
