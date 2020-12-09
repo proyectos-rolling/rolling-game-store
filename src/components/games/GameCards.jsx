@@ -3,7 +3,7 @@ import GameCard from "./GameCard";
 import Row from "react-bootstrap/Row";
 
 const GameCards = ({ games, addItem }) => {
-  const gamesToShowInMain = 6;
+  const gamesToShowInMain = 20;
 
   return (
     <Row>
