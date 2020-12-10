@@ -9,7 +9,7 @@ import Servicios from "./components/Servicios";
 import Conocenos from "./components/Conocenos";
 import Tienda from "./components/Tienda";
 import Nosotros from "./components/Nosotros";
-import Cart from "./components/Cart";
+import Cart from "./components/cart/Cart";
 import GameDescription from "./components/games/gameDescription";
 import * as LS from "./helpers/LSmanager";
 
@@ -19,14 +19,29 @@ function App() {
   const root_url = process.env.REACT_APP_API_ROOT_URL;
 
   const deleteFromCart = (game) => {
-    setCart(cart.filter((item) => item._id !== game._id));
+    let confirmDelete = window.confirm("está seguro que desea borrar el juego del carrito?")
+    if(confirmDelete){
+      setCart(cart.filter((item) => item._id !== game._id));
+    }
   };
+
+  const clearCart = () => {
+    let confirmDelete = window.confirm(
+      "está seguro que desea limpiar el carrito?"
+    );
+    if (confirmDelete) {
+      setCart([]);
+    }
+  }
 
   const addItem = (e,game) => {
     e.preventDefault();
     if(cart.filter(item=>item._id===game._id).length===0){//solo agrego al carrito si no está el juego
       setCart([...cart,game]);
+      alert("Se agregó el item al carrito")
+      return
     }
+    alert("El juego ya está en el carrito")
   };
 
   useEffect(() => {
@@ -65,7 +80,7 @@ function App() {
             <Tienda />
           </Route>
           <Route path="/carrito">
-            <Cart cart={cart} deleteFromCart={deleteFromCart} />
+            <Cart cart={cart} deleteFromCart={deleteFromCart} clearCart={clearCart}/>
           </Route>
           <Route path="/juegos/:gameId">
             <GameDescription games={games} addItem={addItem} />

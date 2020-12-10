@@ -25,7 +25,7 @@ const Search = ({ games }) => {
     setQuery(e.target.value);
   };
   return (
-    <>
+    <div className="position-relative">
       <form>
         <input
           type="text"
@@ -38,16 +38,16 @@ const Search = ({ games }) => {
         />
       </form>
       <ListGroup
-        style={{ maxHeight: "10rem", overflowY: "auto" }}
+        style={{ maxHeight: "10rem", overflowY: "auto", position: "absolute", zIndex:"20" }}
         variant="flush"
       >
         {filterGames(query).map((game) => (
-          <Link to={"/juegos/" + game._id} key={game._id}>
+          <Link to={"/juegos/" + game._id} key={game._id} onClick={()=>setQuery("")}>
             <ListGroup.Item>{game.name}</ListGroup.Item>
           </Link>
         ))}
       </ListGroup>
-    </>
+    </div>
   );
 };
 
