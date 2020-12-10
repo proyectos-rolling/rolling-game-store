@@ -19,14 +19,29 @@ function App() {
   const root_url = process.env.REACT_APP_API_ROOT_URL;
 
   const deleteFromCart = (game) => {
-    setCart(cart.filter((item) => item._id !== game._id));
+    let confirmDelete = window.confirm("está seguro que desea borrar el juego del carrito?")
+    if(confirmDelete){
+      setCart(cart.filter((item) => item._id !== game._id));
+    }
   };
+
+  const clearCart = () => {
+    let confirmDelete = window.confirm(
+      "está seguro que desea limpiar el carrito?"
+    );
+    if (confirmDelete) {
+      setCart([]);
+    }
+  }
 
   const addItem = (e,game) => {
     e.preventDefault();
     if(cart.filter(item=>item._id===game._id).length===0){//solo agrego al carrito si no está el juego
       setCart([...cart,game]);
+      alert("Se agregó el item al carrito")
+      return
     }
+    alert("El juego ya está en el carrito")
   };
 
   useEffect(() => {
