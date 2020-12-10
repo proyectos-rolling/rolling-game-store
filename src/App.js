@@ -9,7 +9,7 @@ import Servicios from "./components/Servicios";
 import Conocenos from "./components/Conocenos";
 import Tienda from "./components/Tienda";
 import Nosotros from "./components/Nosotros";
-import Cart from "./components/Cart";
+import Cart from "./components/cart/Cart";
 import GameDescription from "./components/games/gameDescription";
 import * as LS from "./helpers/LSmanager";
 
@@ -80,7 +80,7 @@ function App() {
             <Tienda />
           </Route>
           <Route path="/carrito">
-            <Cart cart={cart} deleteFromCart={deleteFromCart} />
+            <Cart cart={cart} deleteFromCart={deleteFromCart} clearCart={clearCart}/>
           </Route>
           <Route path="/juegos/:gameId">
             <GameDescription games={games} addItem={addItem} />

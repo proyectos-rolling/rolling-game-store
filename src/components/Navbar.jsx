@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import Search from "./games/Search";
-import CartMenu from "./CartMenu"
+import CartMenu from "./cart/CartMenu"
 import "./css/navbar.css";
 
 const Sidebar = ({ games, cart }) => {
