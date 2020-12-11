@@ -27,5 +27,5 @@ const cartListStyle = {
   zIndex: "100",
   width: "10rem",
   marginLeft: "-7rem",
-  marginRight: "7px",
+  bcolor:"white",
 };
