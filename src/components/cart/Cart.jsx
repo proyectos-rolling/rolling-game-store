@@ -9,7 +9,7 @@ const Cart = ({ cart, deleteFromCart, clearCart }) => {
           {game.name} <button onClick={() => deleteFromCart(game)}>X</button>
         </h1>
       ))}
-      {cart.length !== 0 && <button className="btn btn-primary"onClick={() => clearCart()}>Limpiar Carrito</button>}
+      {cart.length !== 0 && <button className="btn btn-danger"onClick={() => clearCart()}>Limpiar Carrito</button>}
     </div>
   );
 };

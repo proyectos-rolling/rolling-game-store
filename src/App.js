@@ -11,37 +11,77 @@ import Tienda from "./components/Tienda";
 import Nosotros from "./components/Nosotros";
 import Cart from "./components/cart/Cart";
 import GameDescription from "./components/games/gameDescription";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import * as LS from "./helpers/LSmanager";
 
 function App() {
   const [games, setGames] = useState([]);
   const [cart, setCart] = useState(LS.Get("gamesCart"));
+  const [showModal, setShowModal] = useState(false);
+  const [modal, setModal] = useState({
+    title: "",
+    body: "",
+    buttonPrimary: "",
+    buttonConfirmDelete: "",
+    game: {},
+  });
   const root_url = process.env.REACT_APP_API_ROOT_URL;
 
-  const deleteFromCart = (game) => {
-    let confirmDelete = window.confirm("está seguro que desea borrar el juego del carrito?")
-    if(confirmDelete){
-      setCart(cart.filter((item) => item._id !== game._id));
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleCloseModalAndDelete = () => {
+    if (modal.game) {
+      const updatedCart = cart.filter((item) => item._id !== modal.game._id);
+      setCart(updatedCart);
+    } else {
+      setCart([]);
     }
+    setShowModal(false);
+  };
+
+  const deleteFromCart = (game) => {
+    setModal({
+      title: "Eliminar juego del carrito?",
+      body: `Está seguro que desea eliminar ${game.name} del carrito?`,
+      buttonSecondary: "Cancelar",
+      buttonConfirmDelete: "Borrar",
+      game: game,
+    });
+    setShowModal(true);
   };
 
   const clearCart = () => {
-    let confirmDelete = window.confirm(
-      "está seguro que desea limpiar el carrito?"
-    );
-    if (confirmDelete) {
-      setCart([]);
-    }
-  }
+    setModal({
+      title: "Limpiar carrito?",
+      body: `Está seguro que desea limpiar carrito?`,
+      buttonSecondary: "Cancelar",
+      buttonConfirmDelete: "Limpiar carrito",
+    });
+    setShowModal(true);
+  };
 
-  const addItem = (e,game) => {
+  const addItem = (e, game) => {
     e.preventDefault();
-    if(cart.filter(item=>item._id===game._id).length===0){//solo agrego al carrito si no está el juego
-      setCart([...cart,game]);
-      alert("Se agregó el item al carrito")
-      return
+    if (cart.filter((item) => item._id === game._id).length === 0) {
+      //solo agrego al carrito si no está el juego
+      setCart([...cart, game]);
+      setModal({
+        title: "Juego agregado",
+        body: `Se agregó ${game.name} al carrito`,
+        buttonPrimary: "Aceptar",
+      });
+      setShowModal(true);
+      return;
     }
-    alert("El juego ya está en el carrito")
+    setModal({
+      title: "Juego No agregado",
+      body: "El juego ya está en el carrito. Prueba otro juego!",
+      buttonPrimary: "Aceptar",
+    });
+    setShowModal(true);
   };
 
   useEffect(() => {
@@ -80,7 +120,11 @@ function App() {
             <Tienda />
           </Route>
           <Route path="/carrito">
-            <Cart cart={cart} deleteFromCart={deleteFromCart} clearCart={clearCart}/>
+            <Cart
+              cart={cart}
+              deleteFromCart={deleteFromCart}
+              clearCart={clearCart}
+            />
           </Route>
           <Route path="/juegos/:gameId">
             <GameDescription games={games} addItem={addItem} />
@@ -92,6 +136,29 @@ function App() {
             <h1>404 Not found</h1>
           </Route>
         </Switch>
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>{modal.title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{modal.body}</Modal.Body>
+          <Modal.Footer>
+            {modal.buttonSecondary && (
+              <Button variant="secondary" onClick={handleCloseModal}>
+                {modal.buttonSecondary}
+              </Button>
+            )}
+            {modal.buttonPrimary && (
+              <Button variant="primary" onClick={handleCloseModal}>
+                {modal.buttonPrimary}
+              </Button>
+            )}
+            {modal.buttonConfirmDelete && (
+              <Button variant="danger" onClick={handleCloseModalAndDelete}>
+                {modal.buttonConfirmDelete}
+              </Button>
+            )}
+          </Modal.Footer>
+        </Modal>
         <Footer />
       </Router>
     </>
