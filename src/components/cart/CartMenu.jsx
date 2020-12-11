@@ -9,8 +9,8 @@ const cartIcon = <FontAwesomeIcon icon={faShoppingCart} />;
 
 const CartMenu = ({ cart }) => {
   return (
-    <Nav.Link as={Link} to="/carrito" className="position-relative">
-      <h4 className="mt-1 mb-1 test1">
+    <Nav.Link as={Link} to="/carrito" className="position-relative test1">
+      <h4 className="mt-1 mb-1">
         {cartIcon} {cart.length > 0 && <span>({cart.length})</span>}
       </h4>
 

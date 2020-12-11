@@ -2,8 +2,8 @@
     visibility: hidden;
 }
   
-  .test1:hover + .cart123 {
+  .test1:hover .cart123 {
     display: block;
-    color: red;
     visibility: visible;
   }
+
