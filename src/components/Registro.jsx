@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import Container from "react-bootstrap/Container";
-
+import "./css/registro.css";
 
 const Registro = () => {
 
@@ -60,8 +60,8 @@ const Registro = () => {
     };
 
     return (
-        <Container className="py-5">
-            <h3 className="text-center">Registro de usuarios</h3>
+        <Container className="py-5 mt-5 mb-5 register">
+            <h3 className="text-center uwu">Registro de usuarios</h3>
             <Form onSubmit={enviarDatos}>
                 {
                     error && (
