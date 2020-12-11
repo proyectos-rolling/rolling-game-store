@@ -10,9 +10,10 @@ const cartIcon = <FontAwesomeIcon icon={faShoppingCart} />;
 const CartMenu = ({ cart }) => {
   return (
     <Nav.Link as={Link} to="/carrito" className="position-relative">
-      <h4 className="mt-1 mb-1">
+      <h4 className="mt-1 mb-1 test1">
         {cartIcon} {cart.length > 0 && <span>({cart.length})</span>}
       </h4>
+
       <div className="position-absolute bg-dark cart123" style={cartListStyle}>
         {cart.length > 0 && cart.map((game) => <p>{game.name}</p>)}
       </div>
@@ -23,7 +24,8 @@ const CartMenu = ({ cart }) => {
 export default CartMenu;
 
 const cartListStyle = {
-  zIndex: "10",
-  width: "12rem",
-  marginLeft: "-7rem"
+  zIndex: "100",
+  width: "10rem",
+  marginLeft: "-7rem",
+  marginRight: "7px",
 };
