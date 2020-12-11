@@ -10,6 +10,8 @@ const Registro = () => {
         email: '',
         password: ''
     });
+    const [error, setError] = useState(null);
+
     const root_url = process.env.REACT_APP_API_ROOT_URL;
 
     const handleInputChange = (event) => {
@@ -20,8 +22,30 @@ const Registro = () => {
     }
     const enviarDatos = (event) => {
         event.preventDefault();
+        validarDatos();
         saveDatos();
     }
+    const validarDatos = () => {
+        if (!datos.name.trim()) {
+            setError('El nombre es obligatorio!');
+            return
+        }
+        if (!datos.email.trim()) {
+            setError('Ingrese mail');
+            return
+        }
+        if (!datos.password.trim()) {
+
+            setError('Ingrese password');
+            return
+        }
+        if (datos.password.length < 6) {
+            setError('Password de 6 caracteres o más');
+            return
+        }
+        setError(null);
+    };
+
     const saveDatos = () => {
         fetch(`${root_url}/users/new/`, {
             method: 'POST',
@@ -39,12 +63,19 @@ const Registro = () => {
         <Container className="py-5">
             <h3 className="text-center">Registro de usuarios</h3>
             <Form onSubmit={enviarDatos}>
+                {
+                    error && (
+                        <div className="alert alert-danger">
+                            {error}
+                        </div>
+                    )
+                }
                 <Form.Group controlId="nombre">
                     <Form.Label >Nombre</Form.Label>
                     <Form.Control type="text"
                         placeholder="Nombre"
                         name="name"
-                        required
+                        //required
                         onChange={handleInputChange}
                     />
                 </Form.Group>
@@ -55,7 +86,7 @@ const Registro = () => {
                         type="email"
                         placeholder="Ingrese el mail"
                         name="email"
-                        required
+                        //required
                         onChange={handleInputChange}
                     />
                 </Form.Group>
@@ -66,7 +97,7 @@ const Registro = () => {
                         type="password"
                         placeholder="Ingrese password"
                         name="password"
-                        required
+                        //required
                         onChange={handleInputChange}
                     />
                 </Form.Group>
