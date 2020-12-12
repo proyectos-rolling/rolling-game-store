@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Modal } from 'react-bootstrap';
 import Container from "react-bootstrap/Container";
 import "./css/registro.css";
 
@@ -8,11 +8,26 @@ const Registro = () => {
     const [datos, setDatos] = useState({
         name: '',
         email: '',
-        password: ''
+        password: '',
+        passwordConfirmation: ''
     });
     const [error, setError] = useState(null);
+    const [show, setShow] = useState(false);
+    const [mensaje, setMensaje] = useState("");
 
     const root_url = process.env.REACT_APP_API_ROOT_URL;
+
+
+    const handleClose = () => {
+        setShow(false)
+        setDatos({
+            name: "",
+            email: "",
+            password: "",
+            passwordConfirmation: ""
+
+        });
+    }
 
     const handleInputChange = (event) => {
         setDatos({
@@ -23,27 +38,36 @@ const Registro = () => {
     const enviarDatos = (event) => {
         event.preventDefault();
         validarDatos();
-        saveDatos();
+        const validateData = validarDatos();
+        if (validateData) {
+            saveDatos();
+        }
+
     }
     const validarDatos = () => {
         if (!datos.name.trim()) {
             setError('El nombre es obligatorio!');
-            return
+            return false
         }
         if (!datos.email.trim()) {
             setError('Ingrese mail');
-            return
+            return false
         }
         if (!datos.password.trim()) {
 
             setError('Ingrese password');
-            return
+            return false
         }
         if (datos.password.length < 6) {
             setError('Password de 6 caracteres o más');
-            return
+            return false
+        }
+        if (datos.password !== datos.passwordConfirmation) {
+            setError('Las contraseñas no son iguales');
+            return false
         }
         setError(null);
+        return true
     };
 
     const saveDatos = () => {
@@ -55,7 +79,10 @@ const Registro = () => {
             body: JSON.stringify(datos),
         })
             .then((res) => res.json())
-            .then((result) => console.log(result))//usar en el alert 
+            .then((result) => {
+                setMensaje(result.msg);
+                setShow(true);
+            })
             .catch((err) => console.log('error'))
     };
 
@@ -75,7 +102,7 @@ const Registro = () => {
                     <Form.Control type="text"
                         placeholder="Nombre"
                         name="name"
-                        //required
+                        value={datos.name}
                         onChange={handleInputChange}
                     />
                 </Form.Group>
@@ -86,7 +113,7 @@ const Registro = () => {
                         type="email"
                         placeholder="Ingrese el mail"
                         name="email"
-                        //required
+                        value={datos.email}
                         onChange={handleInputChange}
                     />
                 </Form.Group>
@@ -97,7 +124,17 @@ const Registro = () => {
                         type="password"
                         placeholder="Ingrese password"
                         name="password"
-                        //required
+                        value={datos.password}
+                        onChange={handleInputChange}
+                    />
+                </Form.Group>
+                <Form.Group controlId="passwordConfirmation">
+                    <Form.Label >Confirme Password</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="Ingrese password"
+                        name="passwordConfirmation"
+                        value={datos.passwordConfirmation}
                         onChange={handleInputChange}
                     />
                 </Form.Group>
@@ -105,6 +142,23 @@ const Registro = () => {
                     Registrarse
              </Button>
             </Form>
+            <Modal
+                show={show}
+                onHide={handleClose}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title ></Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {mensaje}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" size="lg" block onClick={handleClose}>
+                        Cerrar
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
         </Container>
 
 
