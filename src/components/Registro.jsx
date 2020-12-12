@@ -147,7 +147,7 @@ const Registro = () => {
                 onHide={handleClose}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title ></Modal.Title>
+                    <Modal.Title >Registro de Usuarios</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {mensaje}
