@@ -15,6 +15,8 @@ const Main = ({ games, addItem }) => {
 
   return (
     <div className="flex-grow-1">
+      <div style={{height:"15px"}} className="bg-white d-md-none">
+      </div>
       <Carousel style={{ marginTop: "-15px" }}>
         {games
           .filter((game) => game.featured)
@@ -34,8 +36,8 @@ const Main = ({ games, addItem }) => {
             </Carousel.Item>
           ))}
       </Carousel>
-      <Container>
-        <h1>Ofertas</h1>
+      <Container className='text-center'>
+      <h1>Ofertas</h1>
         {games
           .filter((game) => game.discount > 0)
           .map((game) => (
@@ -43,6 +45,8 @@ const Main = ({ games, addItem }) => {
               {game.name} {game.discount * 100}% OFF!!!
             </p>
           ))}
+      </Container>
+      <Container fluid>
         <GameCards games={games} addItem={addItem} />
       </Container>
     </div>
