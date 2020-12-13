@@ -37,6 +37,9 @@ const GameCards = ({ games, addItem }) => {
   useEffect(() => {
     displayWindowSize();
     window.addEventListener("resize", displayWindowSize);
+    return () => {
+      window.removeEventListener("resize", displayWindowSize);
+    }
   }, []);
 
   return (
