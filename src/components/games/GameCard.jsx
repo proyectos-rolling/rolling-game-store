@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
+import "./css/games.css"
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
@@ -17,7 +18,7 @@ const GameCard = ({ game, addItem }) => {
   };
 
   return (
-    <Col sm={6} className="mt-3 mb-3">
+    <Col sm={6} md={4} className="mt-3 mb-3 w-xl-20">
       <Card bg="dark" text="white" className="h-100 p-2 mt-3">
         <Card.Link as={Link} to={"/juegos/" + game._id}>
           <Card.Img
