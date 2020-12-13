@@ -1,4 +1,6 @@
 .custom {
     background-color: rgb(255, 253, 253);
-    border-radius: 6px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-bottom: 5px;
   }

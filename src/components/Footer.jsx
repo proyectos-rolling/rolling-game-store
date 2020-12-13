@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <Container
       fluid
-      className="d-flex flex-wrap justify-content-around text-center mt-5 footerbg">
+      className=" flex-wrap justify-content-around text-center mt-5 footerbg">
       <Row>
         <Col>
           <Image src="/logo500.png" fluid style={{ maxHeight: "250px" }} />
@@ -48,13 +48,15 @@ const Footer = () => {
           <h6>Contacto</h6>
           <a href="https://www.facebook.com">{fbIcon}</a>
           <a href="https://www.instagram.com/">{igIcon}</a>
-          <a href="https://www.whatsapp.com/?lang=es">{wpIcon}</a>  
+          <a href="https://www.whatsapp.com/?lang=es">{wpIcon}</a> 
+          <Col>
+          <a href="http://qr.afip.gob.ar/?qr=YXKxvKnIS73rllqkgSWURw,," target="_blank" title="AFIP">
+            <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/QR_icon.svg/1024px-QR_icon.svg.png" alt="AFIP" id="dataqr"/>
+          </a>
         </Col>
-        <Col>
-        <a href="http://qr.afip.gob.ar/?qr=YXKxvKnIS73rllqkgSWURw,," target="_blank" title="AFIP">
-            <Image src="https://www.carrefour.com.ar/media/wysiwyg/footer/afip.png" alt="AFIP"/>
-        </a>
+
         </Col>
+       
       </Row>
       <Row>
         <Col>
