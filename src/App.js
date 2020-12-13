@@ -9,6 +9,7 @@ import Servicios from "./components/Servicios";
 import Conocenos from "./components/Conocenos";
 import Tienda from "./components/Tienda";
 import Nosotros from "./components/Nosotros";
+import Error404 from "./components/Error404"
 import Cart from "./components/cart/Cart";
 import GameDescription from "./components/games/gameDescription";
 import Modal from "react-bootstrap/Modal";
@@ -133,7 +134,7 @@ function App() {
             <Nosotros />
           </Route>
           <Route>
-            <h1>404 Not found</h1>
+            <Error404 />
           </Route>
         </Switch>
       </div>
