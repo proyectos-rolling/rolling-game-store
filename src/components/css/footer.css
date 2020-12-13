@@ -1,7 +1,7 @@
 .footerbg{
     background: rgb(255, 255, 255);
-    border-top-right-radius: 9px;
-    border-top-left-radius: 9px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
     padding-top: 20px;
 }
 
