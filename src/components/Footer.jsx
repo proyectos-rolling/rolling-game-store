@@ -50,7 +50,7 @@ const Footer = () => {
           <a href="https://www.instagram.com/">{igIcon}</a>
           <a href="https://www.whatsapp.com/?lang=es">{wpIcon}</a> 
           <Col>
-          <a href="http://qr.afip.gob.ar/?qr=YXKxvKnIS73rllqkgSWURw,," target="_blank" title="AFIP">
+          <a href="http://qr.afip.gob.ar/?qr=YXKxvKnIS73rllqkgSWURw,," target="_blank" rel="noreferrer" title="AFIP">
             <Image src="https://1.bp.blogspot.com/-tyDj3FH73V0/UVugtbI_MYI/AAAAAAAAGYE/TzM5UBA57QQ/s1600/Data-fiscal-Web.jpg" alt="AFIP" id="dataqr"/>
           </a>
         </Col>
