@@ -3,7 +3,7 @@ import GameCard from "./GameCard";
 import {Row} from "react-bootstrap";
 
 const GameCards = ({ games, addItem }) => {
-  const [gamesToShowInMain, setGamesToShowInMain] = useState(0);
+  const [gamesToShowInMain, setGamesToShowInMain] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Paginación
