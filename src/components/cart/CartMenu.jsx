@@ -15,7 +15,7 @@ const CartMenu = ({ cart }) => {
       </h4>
 
       <div className="position-absolute bg-dark cart123" style={cartListStyle}>
-        {cart.length > 0 && cart.map((game) => <p>{game.name}</p>)}
+        {cart.length > 0 && cart.map((game) => <p key={game._id}>{game.name}</p>)}
       </div>
     </Nav.Link>
   );
