@@ -43,7 +43,6 @@ const Main = ({ games, addItem }) => {
               {game.name} {game.discount * 100}% OFF!!!
             </p>
           ))}
-        <h1>Juegos</h1>
         <GameCards games={games} addItem={addItem} />
       </Container>
     </div>
