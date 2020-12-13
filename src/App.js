@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Registro from "./components/Registro";
 import Contact from "./components/contact/Contact";
 import Servicios from "./components/Servicios";
@@ -97,9 +97,9 @@ function App() {
       .catch((error) => console.error("Hubo un error en el fetch: ", error));
   }, [root_url]);
   return (
-    <>
-      <Router>
-        <Navbar games={games} cart={cart} />
+    <div className="d-flex flex-column vh-100">
+      <Navbar games={games} cart={cart} />
+      <div className="flex-grow-1">
         <Switch>
           <Route path="/" exact>
             <Main games={games} addItem={addItem} cart={cart} />
@@ -136,32 +136,32 @@ function App() {
             <h1>404 Not found</h1>
           </Route>
         </Switch>
-        <Modal show={showModal} onHide={handleCloseModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>{modal.title}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>{modal.body}</Modal.Body>
-          <Modal.Footer>
-            {modal.buttonSecondary && (
-              <Button variant="secondary" onClick={handleCloseModal}>
-                {modal.buttonSecondary}
-              </Button>
-            )}
-            {modal.buttonPrimary && (
-              <Button variant="primary" onClick={handleCloseModal}>
-                {modal.buttonPrimary}
-              </Button>
-            )}
-            {modal.buttonConfirmDelete && (
-              <Button variant="danger" onClick={handleCloseModalAndDelete}>
-                {modal.buttonConfirmDelete}
-              </Button>
-            )}
-          </Modal.Footer>
-        </Modal>
-        <Footer />
-      </Router>
-    </>
+      </div>
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>{modal.title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{modal.body}</Modal.Body>
+        <Modal.Footer>
+          {modal.buttonSecondary && (
+            <Button variant="secondary" onClick={handleCloseModal}>
+              {modal.buttonSecondary}
+            </Button>
+          )}
+          {modal.buttonPrimary && (
+            <Button variant="primary" onClick={handleCloseModal}>
+              {modal.buttonPrimary}
+            </Button>
+          )}
+          {modal.buttonConfirmDelete && (
+            <Button variant="danger" onClick={handleCloseModalAndDelete}>
+              {modal.buttonConfirmDelete}
+            </Button>
+          )}
+        </Modal.Footer>
+      </Modal>
+      <Footer />
+    </div>
   );
 }
 
