@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import RequestResult from "./RequestResult";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
+import {Form, Button, Container, Modal} from "react-bootstrap";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
 import es from "react-phone-input-2/lang/es.json";
@@ -18,8 +15,12 @@ const Contact = ({ rootUrl }) => {
   });
 
   const [loading, setloading] = useState(false);
-  const [completed, setCompleted] = useState(false);
   const [responseMessage, setResponseMessage] = useState("")
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+  };
 
   const handleChange = (e) => {
     try {
@@ -59,9 +60,9 @@ const Contact = ({ rootUrl }) => {
       .then((json) => {
         setResponseMessage(json.msg)
         setloading(false)
-        setCompleted(true)
+        setShow(true)
         setTimeout(() => {
-          setCompleted(false);
+          setShow(false);
           setResponseMessage("")
         }, 5000);
       })
@@ -136,12 +137,22 @@ const Contact = ({ rootUrl }) => {
             onChange={handleChange}
           />
         </Form.Group>
+        {loading && <h2 className="text-center py-2">Enviando...</h2>}
         <Button className="btn-block" variant="primary" type="submit" size="lg">
-          Submit
+          Enviar
         </Button>
       </Form>
-      {loading && <h2 className="text-center pt-5">Enviando...</h2>}
-      {completed && <RequestResult msg={responseMessage} />}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Contacto</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{responseMessage}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="dark" size="lg" block onClick={handleClose}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 };
