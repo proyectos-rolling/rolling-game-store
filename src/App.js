@@ -98,7 +98,7 @@ function App() {
       .catch((error) => console.error("Hubo un error en el fetch: ", error));
   }, [root_url]);
   return (
-    <div className="d-flex flex-column vh-100">
+    <div className="d-flex flex-column" style={{minHeight: "100vh"}}>
       <Navbar games={games} cart={cart} />
       <div className="flex-grow-1">
         <Switch>
