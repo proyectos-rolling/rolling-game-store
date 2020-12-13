@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <Container
       fluid
-      className=" flex-wrap justify-content-around text-center mt-5 footerbg shadow">
+      className=" flex-wrap justify-content-around text-center mt-5 footerbg">
       <Row>
         <Col>
           <Image src="/logo500.png" fluid style={{ maxHeight: "250px" }} />
@@ -28,39 +28,44 @@ const Footer = () => {
         <Col>
           <h6>Links Útiles</h6>
           <Col>
-            Contacto
+            <a href="/contacto">Contacto</a>
               </Col>
           <Col>
-            FAQ
+            <a href="/error404">FAQ</a>
               </Col>
-          <Col>
-            Privacy Policy
-              </Col>
-              <Col>
-              Refund Policy
-              </Col>
-              <Col>
-              Terminos de servicio
-              </Col>
+         
 
         </Col>
+        <Col>
+        <h6>Legal</h6>
+          <Col>
+            <a href="https://policies.google.com/privacy?hl=en-US">Privacy Policy</a>
+              </Col>
+          <Col>
+            <a href="https://www.termsfeed.com/blog/sample-return-policy-ecommerce-stores/#What_Is_A_Return_Refund_Policy">Refund Policy</a>
+              </Col>
+          <Col>
+           <a href="https://support.google.com/drive/answer/2450387?hl=en#:~:text=As%20our%20Terms%20of%20Service,store%20in%20your%20Drive%20account."> Terminos de servicio</a>
+              </Col>
+        </Col>
+
         <Col>
           <h6>Contacto</h6>
           <a href="https://www.facebook.com">{fbIcon}</a>
           <a href="https://www.instagram.com/">{igIcon}</a>
-          <a href="https://www.whatsapp.com/?lang=es">{wpIcon}</a> 
+          <a href="https://www.whatsapp.com/?lang=es">{wpIcon}</a>
           <Col>
-          <a href="http://qr.afip.gob.ar/?qr=YXKxvKnIS73rllqkgSWURw,," target="_blank" rel="noreferrer" title="AFIP">
-            <Image src="https://1.bp.blogspot.com/-tyDj3FH73V0/UVugtbI_MYI/AAAAAAAAGYE/TzM5UBA57QQ/s1600/Data-fiscal-Web.jpg" alt="AFIP" id="dataqr"/>
-          </a>
-        </Col>
+            <a href="http://qr.afip.gob.ar/?qr=YXKxvKnIS73rllqkgSWURw,," target="_blank" title="AFIP">
+              <Image src="https://1.bp.blogspot.com/-tyDj3FH73V0/UVugtbI_MYI/AAAAAAAAGYE/TzM5UBA57QQ/s1600/Data-fiscal-Web.jpg" alt="AFIP" id="dataqr" />
+            </a>
+          </Col>
 
         </Col>
-       
+
       </Row>
       <Row>
         <Col>
-        <h6> &copy;Copyright 2020</h6>
+          <h6> &copy;Copyright 2020</h6>
         </Col>
       </Row>
     </Container>
