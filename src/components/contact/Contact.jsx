@@ -69,7 +69,8 @@ const Contact = ({ rootUrl }) => {
   };
 
   return (
-    <Container className="py-5 formutext">
+    <Container className="py-5 mt-5 mb-5 formutext">
+      <h3 className="text-center uwu">Contactanos!</h3>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="name">
           <Form.Label>Nombre (Opcional)</Form.Label>
