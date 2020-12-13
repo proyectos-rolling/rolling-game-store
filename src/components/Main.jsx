@@ -7,7 +7,7 @@ const Main = ({games, addItem}) => {
 
   return (
     <div className="flex-grow-1">
-      <Carousel>
+      <Carousel style={{marginTop: "-15px"}}>
         {games
           .filter((game) => game.featured)
           .map((game) => (

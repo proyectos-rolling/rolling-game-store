@@ -9,7 +9,7 @@ import "./css/navbar.css";
 
 const Sidebar = ({ games, cart }) => {
   return (
-    <Navbar className="custom fixed-top" expand="lg">
+    <Navbar className="custom fixed-top shadow" expand="lg">
       <Navbar.Brand as={Link} to="/" className="mr-auto">
         <img
           alt=""

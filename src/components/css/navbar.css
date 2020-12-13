@@ -3,5 +3,5 @@
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     margin-bottom: -15px;
-z-index: 1;
+    z-index: 20;
   }

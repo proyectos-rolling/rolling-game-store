@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <Container
       fluid
-      className=" flex-wrap justify-content-around text-center mt-5 footerbg">
+      className=" flex-wrap justify-content-around text-center mt-5 footerbg shadow">
       <Row>
         <Col>
           <Image src="/logo500.png" fluid style={{ maxHeight: "250px" }} />

@@ -28,6 +28,7 @@ function App() {
     game: {},
   });
   const root_url = process.env.REACT_APP_API_ROOT_URL;
+  const mainSection = { minHeight: "calc(100vh - 68px)" };
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -98,7 +99,7 @@ function App() {
       .catch((error) => console.error("Hubo un error en el fetch: ", error));
   }, [root_url]);
   return (
-    <div className="d-flex flex-column" style={{minHeight: "100vh"}}>
+    <div className="d-flex flex-column" style={mainSection}>
       <Navbar games={games} cart={cart} />
       <div className="flex-grow-1">
         <Switch>
