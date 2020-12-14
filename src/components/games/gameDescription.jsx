@@ -21,7 +21,7 @@ const GameDescription = ({ games, addItem }) => {
   return ( 
     <div className="container gamedescrip " >
       <Row>
-        <Col  md={4}>
+        <Col  sm={5}>
         <img className="gameimg flex-grow-1"
           variant="top"
           src={`/images/${game.images.poster_image_url}`}
@@ -29,7 +29,7 @@ const GameDescription = ({ games, addItem }) => {
         />
       
       </Col>
-      <Col>
+      <Col sm={7}>
       <h3>{game.name}</h3>
       <p>{game.description}</p>
       <p>${game.price}</p>
