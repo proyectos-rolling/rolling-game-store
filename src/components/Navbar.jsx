@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Search from "./games/Search";
 import CartMenu from "./cart/CartMenu"
 import "./css/navbar.css";
-import LoginOut from "./LoginOut";
+import LoginOut from "./sessions/LoginOut";
 
 const Sidebar = ({ games, cart, loggedUser, setLoggedUser }) => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Modal } from 'react-bootstrap';
 import Container from "react-bootstrap/Container";
-import * as LS from "../helpers/LSmanager";
+import * as LS from "../../helpers/LSmanager";
 
 
 const Login = ({setLoggedUser}) => {

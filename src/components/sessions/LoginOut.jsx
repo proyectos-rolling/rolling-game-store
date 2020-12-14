@@ -3,7 +3,7 @@ import Login from "./Login";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
-import * as LS from "../helpers/LSmanager";
+import * as LS from "../../helpers/LSmanager";
 
 const LoginOut = ({ loggedUser, setLoggedUser }) => {
   if (loggedUser.email === "" || loggedUser.email === undefined) {
