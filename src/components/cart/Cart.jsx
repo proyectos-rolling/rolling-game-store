@@ -12,7 +12,7 @@ const Cart = ({ cart, deleteFromCart, clearCart }) => {
 <Table striped bordered hover variant="dark" className="mt-2">
 <thead>
           <tr>
-            <th colSpan="3">Estas Comprando....</th>
+            <th colSpan="4">Estas Comprando....</th>
           </tr>
         </thead>
         {cart.length === 0 && <h1>No hay juegos en el carrito</h1>}
@@ -27,11 +27,18 @@ const Cart = ({ cart, deleteFromCart, clearCart }) => {
                 />
               </td>
               <td>
-                <h3 key={game._id} className="text-white flex-grow">
+                  <h3 key={game._id} className="text-white">
                   {game.name}
-                </h3>
+                  </h3>
               </td>
-              <td><button className="btn btn-danger w-100" onClick={() => deleteFromCart(game)}>{trashIcon}</button></td>
+              <td>
+                  <h3 key={game._id} className="text-white">
+                  ${game.price}
+                  </h3>
+              </td>
+              <td>
+                <button className="btn btn-danger w-100" onClick={() => deleteFromCart(game)}>{trashIcon}</button>
+                </td>
             </tr>
       </tbody>
   ))}
