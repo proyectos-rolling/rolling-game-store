@@ -1,30 +1,43 @@
 import React from "react";
 import Container from 'react-bootstrap/Container'
-import Jumbotron from 'react-bootstrap/Jumbotron'
+import Table from 'react-bootstrap/Table'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
+const trashIcon = <FontAwesomeIcon icon={faTrash} />;
 
 const Cart = ({ cart, deleteFromCart, clearCart }) => {
   return (
     <Container>
-    
-      {cart.length === 0 && <h1>No hay juegos en el carrito</h1>}
-      {cart.map((game) => (
-        <Jumbotron className="bg-dark justify-content-between align-items-center row m-2">
-        <img
-                className="d-block h-25 w-25"
-                src={`images/${game.images.poster_image_url}`}
-                alt={game.name}
+<Table striped bordered hover variant="dark" className="mt-2">
+<thead>
+          <tr>
+            <th colSpan="3">Estas Comprando....</th>
+          </tr>
+        </thead>
+        {cart.length === 0 && <h1>No hay juegos en el carrito</h1>}
+        {cart.map((game) => (
+          <tbody>
+            <tr>
+              <td className="w-25">
+                <img
+                className="w-100"
+                  src={`images/${game.images.poster_image_url}`}
+                  alt={game.name}
                 />
-        <h3 key={game._id} className="text-white flex-grow">
-        {game.name}
-        </h3> 
-        <button className="btn btn-danger h-50" onClick={() => deleteFromCart(game)}>Quitar del Carrito</button>
-        
-        </Jumbotron>
-      ))}
-    <div className="justify-content-center row">
-    {cart.length !== 0 && <button className="btn btn-danger" onClick={() => clearCart()}>Limpiar Carrito</button>}
-    </div>
-    </Container>
+              </td>
+              <td>
+                <h3 key={game._id} className="text-white flex-grow">
+                  {game.name}
+                </h3>
+              </td>
+              <td><button className="btn btn-danger w-25" onClick={() => deleteFromCart(game)}>{trashIcon}</button></td>
+            </tr>
+      </tbody>
+  ))}
+</Table>
+  {cart.length !== 0 && <button className="btn btn-danger" onClick={() => clearCart()}>Limpiar Carrito</button>}
+  </Container >
   );
 };
 
