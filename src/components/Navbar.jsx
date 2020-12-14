@@ -43,8 +43,7 @@ const Sidebar = ({ games, cart }) => {
         <Nav>
           <Search games={games} />
           <NavDropdown title="Login" id="basic-nav-dropdown" alignRight>
-            <NavDropdown.Item href="#action/3.1">
-              Login Form
+            <NavDropdown.Item href="#login">
               <Login />
             </NavDropdown.Item>
             <NavDropdown.Divider />
