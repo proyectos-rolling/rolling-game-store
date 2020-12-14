@@ -2,7 +2,8 @@ import React from "react";
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faAlignJustify, faTrash } from "@fortawesome/free-solid-svg-icons";
+import "./css/cart.css"
 
 const trashIcon = <FontAwesomeIcon icon={faTrash} />;
 
