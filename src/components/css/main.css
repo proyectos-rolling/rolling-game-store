@@ -22,7 +22,7 @@ body {
     padding: 3px;
 }
 
-p,h1{
+.maincontainer{
     color: white;
     font-size: 1em;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
