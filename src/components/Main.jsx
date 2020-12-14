@@ -36,7 +36,7 @@ const Main = ({ games, addItem }) => {
             </Carousel.Item>
           ))}
       </Carousel>
-      <Container className='text-center maincontainer'>
+      <Container className='text-center maincontainer ofertas'>
       <h1>Ofertas</h1>
         {games
           .filter((game) => game.discount > 0)
@@ -46,7 +46,7 @@ const Main = ({ games, addItem }) => {
             </p>
           ))}
       </Container>
-      <Container className="containersec" fluid>
+      <Container className="mcontainer" fluid>
         <GameCards games={games} addItem={addItem} />
       </Container>
     </div>
