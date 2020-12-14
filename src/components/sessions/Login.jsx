@@ -7,6 +7,7 @@ import * as LS from "../../helpers/LSmanager";
 const Login = ({setLoggedUser}) => {
 
     const [datos, setDatos] = useState({
+        name: '',
         email: '',
         password: '',
     });
@@ -68,8 +69,8 @@ const Login = ({setLoggedUser}) => {
         })
             .then((res) => res.json())
             .then((result) => {
-                setLoggedUser({ email: result.email, login: result.admin });
-                LS.Set("loggedUser", {email: result.email, login: result.admin} )
+                setLoggedUser({ email: result.email, login: result.admin, name: result.name });
+                LS.Set("loggedUser", {email: result.email, login: result.admin, name: result.name} )
                 setMensaje(result.msg);
                 setShow(true);
             })
