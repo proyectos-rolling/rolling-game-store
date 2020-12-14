@@ -4,7 +4,8 @@
 }
   
   .test1:hover .cart123 {
-    display: block;
+    /* display: block; */
     visibility: visible;
   }
+
 
