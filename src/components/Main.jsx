@@ -14,10 +14,10 @@ const Main = ({ games, addItem }) => {
   };
 
   return (
-    <div className="flex-grow-1 maincontainer">
+    <div className="flex-grow-1">
       <div style={{height:"15px"}} className="bg-white d-md-none">
       </div>
-      <Carousel style={{ marginTop: "-15px" }}>
+      <Carousel className="maincontainer"style={{ marginTop: "-15px" }}>
         {games
           .filter((game) => game.featured)
           .map((game) => (
@@ -36,7 +36,7 @@ const Main = ({ games, addItem }) => {
             </Carousel.Item>
           ))}
       </Carousel>
-      <Container className='text-center'>
+      <Container className='text-center maincontainer'>
       <h1>Ofertas</h1>
         {games
           .filter((game) => game.discount > 0)
@@ -46,7 +46,7 @@ const Main = ({ games, addItem }) => {
             </p>
           ))}
       </Container>
-      <Container fluid>
+      <Container className="containersec" fluid>
         <GameCards games={games} addItem={addItem} />
       </Container>
     </div>
