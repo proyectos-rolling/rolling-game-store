@@ -6,7 +6,7 @@ const Price = ({ game, originalPriceClasses = "text-muted strike", discountedPri
   } else if (game.discount > 0)
     return (
       <>
-        <p className={"mr-2 " + originalPriceClasses}>${game.price}</p>
+        <span className={"mr-2 " + originalPriceClasses}>${game.price}</span>
         <span className={discountedPriceClasses}>
           ${(game.price * (1 - game.discount)).toFixed(2)}
         </span>

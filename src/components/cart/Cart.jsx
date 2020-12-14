@@ -2,7 +2,8 @@ import React from "react";
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAlignJustify, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import Price from "../games/Price"
 import "./css/cart.css"
 
 const trashIcon = <FontAwesomeIcon icon={faTrash} />;
@@ -34,7 +35,7 @@ const Cart = ({ cart, deleteFromCart, clearCart }) => {
               </td>
               <td>
                   <h3 key={game._id} className="text-white">
-                  ${game.price}
+                  <Price game={game}/>
                   </h3>
               </td>
               <td>

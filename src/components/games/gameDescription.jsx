@@ -6,6 +6,7 @@ import "./css/gamedescription.css"
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from 'react-bootstrap/Button'
+import Price from "../games/Price"
 
 const cartIcon = <FontAwesomeIcon icon={faCartPlus} />;
 
@@ -32,7 +33,7 @@ const GameDescription = ({ games, addItem }) => {
       <Col>
       <h3>{game.name}</h3>
       <p>{game.description}</p>
-      <p>${game.price}</p>
+      <p><Price game={game} /></p>
       <Button variant="primary" style={{ cursor: "pointer" }} onClick={(e) => addItem(e, game)}> {cartIcon} Agregar al carrito</Button>{' '}
       
       </Col>
