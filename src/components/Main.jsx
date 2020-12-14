@@ -51,10 +51,12 @@ const Main = ({ games, addItem }) => {
                 {games
                   .filter((game) => game.discount > 0)
                   .map((game) => (
-                    <div className="text-white m-2 row wrap justify-content-around">
-                      <h4 key={game._id}>
-                        {game.name} {game.discount * 100}% OFF!!!
-                      </h4>
+                    <div key={game._id} className="text-white m-2 row wrap justify-content-around">
+                      <Link className="text-white" to={"/juegos/" + game._id}>
+                        <h4 key={game._id}>
+                          {game.name} {game.discount * 100}% OFF!!!
+                        </h4>
+                      </Link>
                     </div>
                   ))}
               </Card.Body>

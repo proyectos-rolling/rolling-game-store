@@ -4,11 +4,15 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import * as LS from "../../helpers/LSmanager";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+
+const userIcon = <FontAwesomeIcon className="mr-1" icon={faUserCircle} />;
 
 const LoginOut = ({ loggedUser, setLoggedUser }) => {
   if (loggedUser.email === "" || loggedUser.email === undefined) {
     return (
-      <NavDropdown title="Login" id="basic-nav-dropdown" alignRight>
+      <NavDropdown title="Login" id="login-drop-down" alignRight>
         <NavDropdown.Item href="#login">
           <Login setLoggedUser={setLoggedUser} />
         </NavDropdown.Item>
@@ -20,18 +24,28 @@ const LoginOut = ({ loggedUser, setLoggedUser }) => {
     );
   } else {
     return (
-      <>
-        <Navbar.Text>Bienvenido {loggedUser.email}! </Navbar.Text>
-        <button
-          className="btn btn-sm btn-outline-danger"
-          onClick={() => {
-            setLoggedUser({ email: "", admin: false });
-            LS.Set("loggedUser", { email: "", admin: false });
-          }}
-        >
-          Salir
-        </button>
-      </>
+      <NavDropdown
+        title={loggedUser.name}
+        id="logout-drop-down"
+        alignRight
+      >
+        <NavDropdown.Item href="#login">
+          {userIcon}
+          {loggedUser.name}
+        </NavDropdown.Item>
+        <NavDropdown.Divider />
+        <NavDropdown.Item>
+          <button
+            className="btn btn-sm btn-outline-danger btn-block"
+            onClick={() => {
+              setLoggedUser({ email: "", admin: false, name: "" });
+              LS.Set("loggedUser", { email: "", admin: false, name: "" });
+            }}
+          >
+            Cerrar sesión
+          </button>
+        </NavDropdown.Item>
+      </NavDropdown>
     );
   }
 };

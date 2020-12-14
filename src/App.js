@@ -5,15 +5,14 @@ import Footer from "./components/Footer";
 import { Route, Switch } from "react-router-dom";
 import Registro from "./components/Registro";
 import Contact from "./components/contact/Contact";
-import Servicios from "./components/Servicios";
 import Conocenos from "./components/Conocenos";
-import Tienda from "./components/Tienda";
 import Nosotros from "./components/Nosotros";
 import Error404 from "./components/Error404"
 import Cart from "./components/cart/Cart";
 import GameDescription from "./components/games/gameDescription";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import "./components/css/app.css"
 import * as LS from "./helpers/LSmanager";
 
 
@@ -120,14 +119,8 @@ function App() {
           <Route path="/contacto">
             <Contact rootUrl={root_url} />
           </Route>
-          <Route path="/servicios">
-            <Servicios />
-          </Route>
           <Route path="/conocenos">
             <Conocenos />
-          </Route>
-          <Route path="/tienda">
-            <Tienda />
           </Route>
           <Route path="/carrito">
             <Cart
