@@ -5,6 +5,7 @@ import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import "./css/gamedescription.css"
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Button from 'react-bootstrap/Button'
 
 const cartIcon = <FontAwesomeIcon icon={faCartPlus} />;
 
@@ -21,7 +22,6 @@ const GameDescription = ({ games, addItem }) => {
     <div className="container gamedescrip " >
       <Row>
         <Col  md={4}>
-      
         <img className="gameimg flex-grow-1"
           variant="top"
           src={`/images/${game.images.poster_image_url}`}
@@ -30,12 +30,11 @@ const GameDescription = ({ games, addItem }) => {
       
       </Col>
       <Col>
-      <p>{game.name}</p>
+      <h3>{game.name}</h3>
       <p>{game.description}</p>
-      <p>{game.price}</p>
-      <h1 style={{ cursor: "pointer" }} onClick={(e) => addItem(e, game)}>
-        {cartIcon}
-      </h1>
+      <p>${game.price}</p>
+      <Button variant="primary" style={{ cursor: "pointer" }} onClick={(e) => addItem(e, game)}> {cartIcon} Agregar al carrito</Button>{' '}
+      
       </Col>
     
     </Row>
