@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ListGroup from "react-bootstrap/ListGroup";
+import {ListGroup, Form, FormControl} from "react-bootstrap";
 import {Link} from "react-router-dom"
 
 const Search = ({ games }) => {
@@ -26,23 +26,34 @@ const Search = ({ games }) => {
   };
   return (
     <div className="position-relative">
-      <form>
-        <input
+      <Form inline>
+        <FormControl
+          id="gameSearch"
           type="text"
           name="gameSearch"
-          id="gameSearch"
-          placeholder="Enter a game name..."
           value={query}
+          placeholder="Ingrese un juego..."
           onChange={handleChange}
+          onBlur={()=>setTimeout(()=>setQuery(""),500)}
           autoComplete="off"
+          className="mr-sm-2"
         />
-      </form>
+      </Form>
       <ListGroup
-        style={{ maxHeight: "10rem", overflowY: "auto", position: "absolute", zIndex:"20" }}
+        style={{
+          maxHeight: "10rem",
+          overflowY: "auto",
+          position: "absolute",
+          zIndex: "20",
+        }}
         variant="flush"
       >
         {filterGames(query).map((game) => (
-          <Link to={"/juegos/" + game._id} key={game._id} onClick={()=>setQuery("")}>
+          <Link
+            to={"/juegos/" + game._id}
+            key={game._id}
+            onClick={() => setQuery("")}
+          >
             <ListGroup.Item>{game.name}</ListGroup.Item>
           </Link>
         ))}

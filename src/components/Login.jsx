@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import * as LS from "../helpers/LSmanager";
 
 
-const Login = () => {
+const Login = ({setLoggedUser}) => {
 
     const [datos, setDatos] = useState({
         email: '',
@@ -68,7 +68,8 @@ const Login = () => {
         })
             .then((res) => res.json())
             .then((result) => {
-                LS.Add("loggedUser", { email: result.mail, admin: result.admin })
+                setLoggedUser({ email: result.email, login: result.admin });
+                LS.Set("loggedUser", {email: result.email, login: result.admin} )
                 setMensaje(result.msg);
                 setShow(true);
             })

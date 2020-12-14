@@ -28,6 +28,8 @@ function App() {
     buttonConfirmDelete: "",
     game: {},
   });
+  const [loggedUser, setLoggedUser] = useState(LS.Get("loggedUser")||{email:"",admin:false});
+
   const root_url = process.env.REACT_APP_API_ROOT_URL;
   const mainSection = { minHeight: "calc(100vh - 68px)" };
 
@@ -101,7 +103,12 @@ function App() {
   }, [root_url]);
   return (
     <div className="d-flex flex-column" style={mainSection}>
-      <Navbar games={games} cart={cart} />
+      <Navbar
+        games={games}
+        cart={cart}
+        loggedUser={loggedUser}
+        setLoggedUser={setLoggedUser}
+      />
       <div className="flex-grow-1">
         <Switch>
           <Route path="/" exact>
