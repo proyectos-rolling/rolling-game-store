@@ -3,7 +3,9 @@ import Carousel from "react-bootstrap/Carousel";
 import GameCards from "./games/GameCards";
 import { Link } from "react-router-dom";
 import "./css/main.css";
-
+import Accordion from 'react-bootstrap/Accordion'
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button"
 const Main = ({ games, addItem }) => {
   const truncate = (string, maxNumber) => {
     if (string.length > maxNumber) {
@@ -15,7 +17,7 @@ const Main = ({ games, addItem }) => {
 
   return (
     <div className="flex-grow-1">
-      <div style={{height:"15px"}} className="bg-white d-md-none">
+      <div style={{ height: "15px" }} className="bg-white d-md-none">
       </div>
       <Carousel style={{ marginTop: "-15px" }}>
         {games
@@ -36,15 +38,30 @@ const Main = ({ games, addItem }) => {
             </Carousel.Item>
           ))}
       </Carousel>
-      <Container className='text-center'>
-      <h1>Ofertas</h1>
-        {games
-          .filter((game) => game.discount > 0)
-          .map((game) => (
-            <p key={game._id}>
-              {game.name} {game.discount * 100}% OFF!!!
-            </p>
-          ))}
+
+      <Container fluid className='text-center'>
+        <Accordion>
+          <Card className="bg-dark m-2">
+            <Card.Header>
+              <Accordion.Toggle as={Button} eventKey="0" className="btn btn-danger">
+                Ofertas
+      </Accordion.Toggle>
+            </Card.Header>
+            <Accordion.Collapse eventKey="0">
+              <Card.Body>
+                {games
+                  .filter((game) => game.discount > 0)
+                  .map((game) => (
+                    <div className="text-white m-2 row wrap justify-content-around">
+                      <h4 key={game._id}>
+                        {game.name} {game.discount * 100}% OFF!!!
+                      </h4>
+                    </div>
+                  ))}
+              </Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        </Accordion>
       </Container>
       <Container fluid>
         <GameCards games={games} addItem={addItem} />
