@@ -14,6 +14,7 @@ import Cart from "./components/cart/Cart";
 import GameDescription from "./components/games/gameDescription";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import "./components/css/app.css"
 import * as LS from "./helpers/LSmanager";
 
 

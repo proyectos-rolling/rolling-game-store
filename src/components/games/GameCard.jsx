@@ -1,7 +1,8 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
-import "./css/games.css"
+import Price from "./Price";
+import "./css/games.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
@@ -45,6 +46,9 @@ const GameCard = ({ game, addItem }) => {
             className="my-3"
             onClick={(e) => addItem(e, game)}
           >
+            <p>
+              <Price game={game} />
+            </p>
             {cartIcon} Agregar al carrito
           </h4>
         </Card.Body>
