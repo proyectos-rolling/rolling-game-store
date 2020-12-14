@@ -16,6 +16,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import * as LS from "./helpers/LSmanager";
 
+
 function App() {
   const [games, setGames] = useState([]);
   const [cart, setCart] = useState(LS.Get("gamesCart"));
@@ -134,6 +135,7 @@ function App() {
           <Route path="/nosotros">
             <Nosotros />
           </Route>
+
           <Route>
             <Error404 />
           </Route>
