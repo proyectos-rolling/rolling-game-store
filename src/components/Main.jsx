@@ -14,7 +14,7 @@ const Main = ({ games, addItem }) => {
   };
 
   return (
-    <div className="flex-grow-1">
+    <div className="flex-grow-1 maincontainer">
       <div style={{height:"15px"}} className="bg-white d-md-none">
       </div>
       <Carousel style={{ marginTop: "-15px" }}>
