@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Search from "./games/Search";
 import CartMenu from "./cart/CartMenu"
 import "./css/navbar.css";
+import Login from "./Login";
 
 const Sidebar = ({ games, cart }) => {
   return (
@@ -42,7 +43,9 @@ const Sidebar = ({ games, cart }) => {
         <Nav>
           <Search games={games} />
           <NavDropdown title="Login" id="basic-nav-dropdown" alignRight>
-            <NavDropdown.Item href="#action/3.1">Login form</NavDropdown.Item>
+            <NavDropdown.Item href="#login">
+              <Login />
+            </NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item as={Link} to="/registro">
               No estás registrado aún? Hacé click aquí
@@ -50,7 +53,7 @@ const Sidebar = ({ games, cart }) => {
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>
-      <CartMenu cart={cart}/>
+      <CartMenu cart={cart} />
     </Navbar>
   );
 };
