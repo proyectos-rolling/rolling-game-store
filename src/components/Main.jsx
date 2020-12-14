@@ -39,11 +39,11 @@ const Main = ({ games, addItem }) => {
           ))}
       </Carousel>
 
-      <Container fluid className='text-center'>
+      <Container className='text-center'>
         <Accordion>
           <Card className="bg-dark m-2">
             <Card.Header>
-              <Accordion.Toggle as={Button} eventKey="0" className="btn btn-danger">
+              <Accordion.Toggle as={Button} eventKey="0" className="btn btn-primary">
                 Ofertas
       </Accordion.Toggle>
             </Card.Header>
