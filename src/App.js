@@ -15,6 +15,7 @@ import GameDescription from "./components/games/gameDescription";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import * as LS from "./helpers/LSmanager";
+import CargaJuegos from "./components/CargaJuegos";
 
 function App() {
   const [games, setGames] = useState([]);
@@ -136,6 +137,9 @@ function App() {
           </Route>
           <Route>
             <Error404 />
+          </Route>
+          <Route path="/admin">
+            <CargaJuegos />
           </Route>
         </Switch>
       </div>
