@@ -31,7 +31,7 @@ const Cart = ({ cart, deleteFromCart, clearCart }) => {
                   {game.name}
                 </h3>
               </td>
-              <td><button className="btn btn-danger w-25" onClick={() => deleteFromCart(game)}>{trashIcon}</button></td>
+              <td><button className="btn btn-danger w-100" onClick={() => deleteFromCart(game)}>{trashIcon}</button></td>
             </tr>
       </tbody>
   ))}
