@@ -19,7 +19,7 @@ const Sidebar = ({ games, cart }) => {
           height="30"
           className="d-inline-block align-top"
         />{" "}
-        RollinGame Store
+        RollinGame <span className="d-none d-sm-inline">Store</span>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

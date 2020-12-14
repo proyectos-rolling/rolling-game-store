@@ -17,7 +17,7 @@ const Cart = ({ cart, deleteFromCart, clearCart }) => {
         </thead>
         {cart.length === 0 && <h1>No hay juegos en el carrito</h1>}
         {cart.map((game) => (
-          <tbody>
+          <tbody key={game._id}>
             <tr>
               <td className="w-25">
                 <img
