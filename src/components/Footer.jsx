@@ -10,7 +10,6 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 
 import './css/footer.css'
-import { Button } from "react-bootstrap";
 
 
 const fbIcon = <FontAwesomeIcon icon={faFacebookSquare} size="lg" />;
