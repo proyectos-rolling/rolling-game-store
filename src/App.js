@@ -15,7 +15,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./components/css/app.css"
 import * as LS from "./helpers/LSmanager";
-
+import CargaJuegos from "./components/CargaJuegos";
 
 function App() {
   const [games, setGames] = useState([]);
@@ -150,7 +150,9 @@ function App() {
           <Route path="/nosotros">
             <Nosotros />
           </Route>
-
+          <Route path="/admin">
+            <CargaJuegos setGames={setGames} games={games} />
+          </Route>
           <Route>
             <Error404 />
           </Route>
