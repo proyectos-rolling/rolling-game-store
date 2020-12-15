@@ -7,6 +7,7 @@ import Registro from "./components/Registro";
 import Contact from "./components/contact/Contact";
 import Conocenos from "./components/Conocenos";
 import Nosotros from "./components/Nosotros";
+import Checkout from "./components/cart/Checkout";
 import Error404 from "./components/Error404"
 import Cart from "./components/cart/Cart";
 import GameDescription from "./components/games/gameDescription";
@@ -28,9 +29,17 @@ function App() {
     game: {},
   });
   const [loggedUser, setLoggedUser] = useState(LS.Get("loggedUser")||{email:"",admin:false});
-
   const root_url = process.env.REACT_APP_API_ROOT_URL;
   const mainSection = { minHeight: "calc(100vh - 68px)" };
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    let sum = 0;
+    cart.forEach((game) => {
+      sum += game.price * (1 - game.discount);
+    });
+    setTotalPrice(sum.toFixed(2));
+  }, [cart]);
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -122,11 +131,17 @@ function App() {
           <Route path="/conocenos">
             <Conocenos />
           </Route>
+          <Route path="/checkout">
+            <Checkout totalPrice={totalPrice} />
+          </Route>
           <Route path="/carrito">
             <Cart
               cart={cart}
               deleteFromCart={deleteFromCart}
               clearCart={clearCart}
+              loggedUser={loggedUser}
+              totalPrice={totalPrice}
+              setTotalPrice={setTotalPrice}
             />
           </Route>
           <Route path="/juegos/:gameId">
