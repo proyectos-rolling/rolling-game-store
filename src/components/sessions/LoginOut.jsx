@@ -23,13 +23,13 @@ const LoginOut = ({ loggedUser, setLoggedUser }) => {
     );
   } else {
     return (
-      <NavDropdown
-        title={loggedUser.name}
+      <NavDropdown style={{fontSize:"1.4rem"}}
+        title= {userIcon} 
         id="logout-drop-down"
         alignRight
-      >
+      > 
         <NavDropdown.Item href="#login">
-          {userIcon}
+        {userIcon}
           {loggedUser.name}
         </NavDropdown.Item>
         <NavDropdown.Divider />
