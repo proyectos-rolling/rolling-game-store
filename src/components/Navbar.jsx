@@ -32,9 +32,8 @@ const Sidebar = ({ games, cart, loggedUser, setLoggedUser }) => {
           <Nav.Link as={Link} to="/contacto">
             Contacto
           </Nav.Link>
-          <Nav.Link as={Link} to="/admin">
-            Admin
-          </Nav.Link>
+          {loggedUser.admin ? <Nav.Link as={Link} to="/admin">Admin</Nav.Link> : null}
+          
 
         </Nav>
         <Nav>

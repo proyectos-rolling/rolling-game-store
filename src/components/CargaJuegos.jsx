@@ -3,7 +3,7 @@ import { Form, Button, Modal } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import "./css/registro.css";
 
-const CargaJuegos = ({ setGames, games }) => {
+const CargaJuegos = ({ setGames, games, loggedUser }) => {
     const [allGames, setAllGames] = useState([])
   const [datos, setDatos] = useState({
     name: "",
@@ -165,7 +165,9 @@ const CargaJuegos = ({ setGames, games }) => {
     setGames(json.filter((game)=>game.active))
   };
 
-
+  if(!loggedUser.admin){
+    return (<h1 className="text-center">Debe ser admin para ver esta página</h1>)
+  }
   return (
     <Container>
       <h3 id="titulo-carga-juegos">Cargar Juego</h3>

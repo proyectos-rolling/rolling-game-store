@@ -151,7 +151,11 @@ function App() {
             <Nosotros />
           </Route>
           <Route path="/admin">
-            <CargaJuegos setGames={setGames} games={games} />
+            <CargaJuegos
+              setGames={setGames}
+              games={games}
+              loggedUser={loggedUser}
+            />
           </Route>
           <Route>
             <Error404 />
