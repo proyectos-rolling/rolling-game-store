@@ -34,7 +34,7 @@ const Footer = () => {
             <a href="/error404">FAQ</a>
               </Col>
         </Col>
-        <Col className="m-2">
+        <Col className="col-3">
           <h6>Contacto</h6>
           <a className="m-2" href="https://www.facebook.com">{fbIcon}</a>
           <a className="m-2" href="https://www.instagram.com/">{igIcon}</a>
