@@ -32,6 +32,10 @@ const Sidebar = ({ games, cart, loggedUser, setLoggedUser }) => {
           <Nav.Link as={Link} to="/contacto">
             Contacto
           </Nav.Link>
+          <Nav.Link as={Link} to="/admin">
+            Admin
+          </Nav.Link>
+
         </Nav>
         <Nav>
           <Search games={games} />
