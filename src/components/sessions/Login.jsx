@@ -69,8 +69,8 @@ const Login = ({setLoggedUser}) => {
         })
             .then((res) => res.json())
             .then((result) => {
-                setLoggedUser({ email: result.email, login: result.admin, name: result.name });
-                LS.Set("loggedUser", {email: result.email, login: result.admin, name: result.name} )
+                setLoggedUser({ email: result.email, admin: result.admin, name: result.name });
+                LS.Set("loggedUser", {email: result.email, admin: result.admin, name: result.name} )
                 setMensaje(result.msg);
                 setShow(true);
             })
