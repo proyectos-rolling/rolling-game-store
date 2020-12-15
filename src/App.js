@@ -151,12 +151,11 @@ function App() {
           <Route path="/nosotros">
             <Nosotros />
           </Route>
-
+          <Route path="/admin">
+            <CargaJuegos setGames={setGames} games={games} />
+          </Route>
           <Route>
             <Error404 />
-          </Route>
-          <Route path="/admin">
-            <CargaJuegos />
           </Route>
         </Switch>
       </div>
