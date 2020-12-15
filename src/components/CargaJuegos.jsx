@@ -2,9 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import "./css/registro.css";
+import Table from 'react-bootstrap/Table'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
+
+const trashIcon = <FontAwesomeIcon icon={faTrash} />;
+const editIcon = <FontAwesomeIcon icon={faEdit} />;
 
 const CargaJuegos = ({ setGames, games, loggedUser }) => {
-    const [allGames, setAllGames] = useState([])
+  const [allGames, setAllGames] = useState([])
   const [datos, setDatos] = useState({
     name: "",
     description: "",
@@ -57,7 +64,7 @@ const CargaJuegos = ({ setGames, games, loggedUser }) => {
       console.log(error);
     }
   };
-  
+
   const handleEdit = (game) => { //cuando hago click en el boton editar de la lista
     setDatos({
       name: game.name,
@@ -73,30 +80,30 @@ const CargaJuegos = ({ setGames, games, loggedUser }) => {
     });
   };
   const handleDelete = async (game) => {
-      setDatos({
-        _id: game._id,
+    setDatos({
+      _id: game._id,
+    });
+    const confirmation = window.confirm("Está seguro?")
+    if (confirmation) {
+      const res = await fetch(`${root_url}/games/${game._id}/`, {
+        //revisar
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json", //fijarse en postman
+        },
+        body: JSON.stringify(datos),
       });
-      const confirmation = window.confirm("Está seguro?")
-      if(confirmation){
-          const res = await fetch(`${root_url}/games/${game._id}/`, {
-            //revisar
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json", //fijarse en postman
-            },
-            body: JSON.stringify(datos),
-          });
-          const result = await res.json();
+      const result = await res.json();
 
-          setMensaje(result.msg);
-          setShow(true);
+      setMensaje(result.msg);
+      setShow(true);
 
-          const res2 = await fetch(`${root_url}/games`);
-          const json = await res2.json();
-          setAllGames(json);
-          setGames(json.filter((game) => game.active));
-      }
-      
+      const res2 = await fetch(`${root_url}/games`);
+      const json = await res2.json();
+      setAllGames(json);
+      setGames(json.filter((game) => game.active));
+    }
+
   }
   const enviarDatos = (event) => {
     event.preventDefault(); //no recarga la pagina
@@ -162,15 +169,15 @@ const CargaJuegos = ({ setGames, games, loggedUser }) => {
     const res2 = await fetch(`${root_url}/games`);
     const json = await res2.json();
     setAllGames(json);
-    setGames(json.filter((game)=>game.active))
+    setGames(json.filter((game) => game.active))
   };
 
-  if(!loggedUser.admin){
+  if (!loggedUser.admin) {
     return (<h1 className="text-center">Debe ser admin para ver esta página</h1>)
   }
   return (
     <Container>
-      <h3 id="titulo-carga-juegos">Cargar Juego</h3>
+      <h3 id="titulo-carga-juegos" className="text-center">Cargar Juego</h3>
       <Form onSubmit={enviarDatos}>
         {error && <div className="alert alert-danger">{error}</div>}
         <Form.Group controlId="nombre">
@@ -235,22 +242,22 @@ const CargaJuegos = ({ setGames, games, loggedUser }) => {
         </Form.Group>
         <Form.Group controlId="images">
           <Form.Label>Imagen Poster</Form.Label>
-          <Form.Control
-            type="file"
-            placeholder="Imagen"
+          <Form.File
+            label="Imagen"
             name="poster_image_url"
             value={datos.poster_image_url}
             onChange={handleInputChange}
+            custom
           />
         </Form.Group>
         <Form.Group controlId="images">
           <Form.Label>Imagen Banner</Form.Label>
-          <Form.Control
-            type="file"
-            placeholder="Imagen"
+          <Form.File
+            label="Imagen"
             name="banner_image_url"
             value={datos.banner_image_url}
             onChange={handleInputChange}
+            custom
           />
         </Form.Group>
 
@@ -258,11 +265,34 @@ const CargaJuegos = ({ setGames, games, loggedUser }) => {
           Finalizar carga
         </Button>
       </Form>
-      <Button variant="success" size="lg" block onClick={() => updateDatos()}>
+      <Button className="mt-2" variant="success" size="lg" block onClick={() => updateDatos()}>
         actualizar juego
       </Button>
 
-      <ul>
+
+      <Table bordered hover variant="primary" className="mt-4">
+        <thead>
+          <tr>
+            <th>Juegos</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allGames.map((game) => (
+            <tr key={game._id}>
+              <td >
+                <div className=" row p-2 justify-content-between">
+                  {game.name}{" "}
+                  <div>
+                  <a className="btn btn-success m-1" href="#titulo-carga-juegos" onClick={() => handleEdit(game)}>{editIcon}</a>
+                  <a className="btn btn-danger m-1" href="#titulo-carga-juegos" onClick={() => handleDelete(game)}>{trashIcon}</a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+      {/* <ul>
         {allGames.map((game) => (
           <li key={game._id}>
             {game.name}{" "}
@@ -274,7 +304,7 @@ const CargaJuegos = ({ setGames, games, loggedUser }) => {
             </a>
           </li>
         ))}
-      </ul>
+      </ul> */}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
