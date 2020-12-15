@@ -177,7 +177,9 @@ const CargaJuegos = ({ setGames, games, loggedUser }) => {
   }
   return (
     <Container>
-      <h3 id="titulo-carga-juegos" className="text-center">Cargar Juego</h3>
+      <h3 id="titulo-carga-juegos" className="text-center">
+        Cargar Juego
+      </h3>
       <Form onSubmit={enviarDatos}>
         {error && <div className="alert alert-danger">{error}</div>}
         <Form.Group controlId="nombre">
@@ -220,6 +222,16 @@ const CargaJuegos = ({ setGames, games, loggedUser }) => {
             onChange={handleInputChange}
           />
         </Form.Group>
+        <Form.Group controlId="featured">
+          <Form.Label>Destacado</Form.Label>
+          <Form.Check
+            name="featured"
+            type="checkbox"
+            checked={datos.featured}
+            label="Destacado"
+            onChange={handleInputChange}
+          />
+        </Form.Group>
         <Form.Group controlId="activo">
           <Form.Label>Activo</Form.Label>
           <Form.Check
@@ -229,8 +241,9 @@ const CargaJuegos = ({ setGames, games, loggedUser }) => {
             label="Activo"
             onChange={handleInputChange}
           />
-          
-          <Form.Group controlId="descripcion">
+        </Form.Group>
+
+        <Form.Group controlId="descripcion">
           <Form.Label>Decripcion</Form.Label>
           <Form.Control
             as="textarea"
@@ -242,9 +255,6 @@ const CargaJuegos = ({ setGames, games, loggedUser }) => {
             value={datos.description}
             onChange={handleInputChange}
           />
-        </Form.Group>
-
-
         </Form.Group>
         <Form.Group controlId="images">
           <Form.Label>Imagen Poster</Form.Label>
@@ -271,10 +281,15 @@ const CargaJuegos = ({ setGames, games, loggedUser }) => {
           Finalizar carga
         </Button>
       </Form>
-      <Button className="mt-2" variant="success" size="lg" block onClick={() => updateDatos()}>
+      <Button
+        className="mt-2"
+        variant="success"
+        size="lg"
+        block
+        onClick={() => updateDatos()}
+      >
         actualizar juego
       </Button>
-
 
       <Table bordered hover variant="primary" className="mt-4">
         <thead>
@@ -285,12 +300,24 @@ const CargaJuegos = ({ setGames, games, loggedUser }) => {
         <tbody>
           {allGames.map((game) => (
             <tr key={game._id}>
-              <td >
+              <td>
                 <div className=" row p-2 justify-content-between">
                   {game.name}{" "}
                   <div>
-                  <a className="btn btn-success m-1" href="#titulo-carga-juegos" onClick={() => handleEdit(game)}>{editIcon}</a>
-                  <a className="btn btn-danger m-1" href="#titulo-carga-juegos" onClick={() => handleDelete(game)}>{trashIcon}</a>
+                    <a
+                      className="btn btn-success m-1"
+                      href="#titulo-carga-juegos"
+                      onClick={() => handleEdit(game)}
+                    >
+                      {editIcon}
+                    </a>
+                    <a
+                      className="btn btn-danger m-1"
+                      href="#titulo-carga-juegos"
+                      onClick={() => handleDelete(game)}
+                    >
+                      {trashIcon}
+                    </a>
                   </div>
                 </div>
               </td>
