@@ -1,10 +1,12 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Accordion, Card, Button} from "react-bootstrap"
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 import "./css/cart.css"
+const root_url = process.env.REACT_APP_API_ROOT_URL;
 
 const Checkout = ({totalPrice}) => {
+  const [redirectUrl, setRedirectUrl] = useState("")
 
   const [data, setData] = useState({
     cvc:"",
@@ -19,6 +21,24 @@ const Checkout = ({totalPrice}) => {
       [e.target.name]: e.target.value,
     });
   };
+
+  useEffect(() => {
+    fetch(`${root_url}/checkout/mp`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: "Juegos RollinGame Store",
+        price: totalPrice,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        setRedirectUrl(result.redirectUrl);
+      })
+      .catch((err) => console.log("error"));
+  }, [totalPrice]);
 
   return (
     <div className="fondo">
@@ -81,10 +101,23 @@ const Checkout = ({totalPrice}) => {
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="1">
-            <Card.Body>Hello! I'm another body</Card.Body>
+            <button
+              className="btn btn-primary btn-block my-3"
+              
+            >
+              Ir a Mercado Pago y pagar
+            </button>
           </Accordion.Collapse>
         </Card>
       </Accordion>
+      <a
+        href={redirectUrl}
+        className="btn btn-primary btn-block my-3"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Ir a Mercado Pago y pagar
+      </a>
     </div>
   );
 }
