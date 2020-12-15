@@ -101,23 +101,17 @@ const Checkout = ({totalPrice}) => {
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="1">
-            <button
+            <a
+              href={redirectUrl}
               className="btn btn-primary btn-block my-3"
-              
+              target="_blank"
+              rel="noreferrer"
             >
               Ir a Mercado Pago y pagar
-            </button>
+            </a>
           </Accordion.Collapse>
         </Card>
       </Accordion>
-      <a
-        href={redirectUrl}
-        className="btn btn-primary btn-block my-3"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Ir a Mercado Pago y pagar
-      </a>
     </div>
   );
 }
