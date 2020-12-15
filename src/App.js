@@ -17,7 +17,6 @@ import "./components/css/app.css"
 import * as LS from "./helpers/LSmanager";
 import CargaJuegos from "./components/CargaJuegos";
 
-
 function App() {
   const [games, setGames] = useState([]);
   const [cart, setCart] = useState(LS.Get("gamesCart"));
