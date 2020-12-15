@@ -29,6 +29,10 @@ const LoginOut = ({ loggedUser, setLoggedUser }) => {
         alignRight
         style={{ fontSize: "1.4rem" }}
       >
+        <NavDropdown.Item href="#login">
+          {userIcon}
+          {loggedUser.name}
+        </NavDropdown.Item>
         <NavDropdown.Item>
           <button
             className="btn btn-sm btn-outline-danger btn-block"
