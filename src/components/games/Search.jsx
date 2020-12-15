@@ -36,7 +36,7 @@ const Search = ({ games }) => {
           onChange={handleChange}
           onBlur={()=>setTimeout(()=>setQuery(""),500)}
           autoComplete="off"
-          className="mr-sm-2"
+          className="mr-sm-2 mt-1"
         />
       </Form>
       <ListGroup
