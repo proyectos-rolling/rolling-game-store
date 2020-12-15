@@ -190,16 +190,6 @@ const CargaJuegos = ({ setGames, games, loggedUser }) => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Form.Group controlId="descripcion">
-          <Form.Label>Decripcion</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Descripcion"
-            name="description"
-            value={datos.description}
-            onChange={handleInputChange}
-          />
-        </Form.Group>
         <Form.Group controlId="price">
           <Form.Label>Precio</Form.Label>
           <Form.Control
@@ -239,6 +229,22 @@ const CargaJuegos = ({ setGames, games, loggedUser }) => {
             label="Activo"
             onChange={handleInputChange}
           />
+          
+          <Form.Group controlId="descripcion">
+          <Form.Label>Decripcion</Form.Label>
+          <Form.Control
+            as="textarea"
+            type="textarea"
+            rows="10"
+            cols="30"
+            placeholder="Descripcion"
+            name="description"
+            value={datos.description}
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+
+
         </Form.Group>
         <Form.Group controlId="images">
           <Form.Label>Imagen Poster</Form.Label>
