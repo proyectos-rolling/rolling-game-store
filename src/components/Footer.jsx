@@ -10,6 +10,7 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 
 import './css/footer.css'
+import { Button } from "react-bootstrap";
 
 
 const fbIcon = <FontAwesomeIcon icon={faFacebookSquare} size="lg" />;
@@ -33,9 +34,13 @@ const Footer = () => {
           <Col>
             <a href="/error404">FAQ</a>
               </Col>
-         
-
         </Col>
+        <Col className="m-2">
+          <h6>Contacto</h6>
+          <a className="m-2" href="https://www.facebook.com">{fbIcon}</a>
+          <a className="m-2" href="https://www.instagram.com/">{igIcon}</a>
+          <a className="m-2" href="https://www.whatsapp.com/?lang=es">{wpIcon}</a>
+          </Col>
         <Col>
         <h6>Legal</h6>
           <Col>
@@ -48,20 +53,12 @@ const Footer = () => {
            <a href="https://support.google.com/drive/answer/2450387?hl=en#:~:text=As%20our%20Terms%20of%20Service,store%20in%20your%20Drive%20account."> Terminos de servicio</a>
               </Col>
         </Col>
-
+    
         <Col>
-          <h6>Contacto</h6>
-          <a href="https://www.facebook.com">{fbIcon}</a>
-          <a href="https://www.instagram.com/">{igIcon}</a>
-          <a href="https://www.whatsapp.com/?lang=es">{wpIcon}</a>
-          <Col>
             <a href="http://qr.afip.gob.ar/?qr=YXKxvKnIS73rllqkgSWURw,," target="_blank" rel="noreferrer" title="AFIP">
               <Image src="https://1.bp.blogspot.com/-tyDj3FH73V0/UVugtbI_MYI/AAAAAAAAGYE/TzM5UBA57QQ/s1600/Data-fiscal-Web.jpg" alt="AFIP" id="dataqr" />
             </a>
           </Col>
-
-        </Col>
-
       </Row>
       <Row>
         <Col>
