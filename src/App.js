@@ -28,7 +28,7 @@ function App() {
     buttonConfirmDelete: "",
     game: {},
   });
-  const [loggedUser, setLoggedUser] = useState(LS.Get("loggedUser")||{email:"",admin:false});
+  const [loggedUser, setLoggedUser] = useState(LS.Get("loggedUser")||{name:"",email:"",admin:false});
   const root_url = process.env.REACT_APP_API_ROOT_URL;
   const mainSection = { minHeight: "calc(100vh - 68px)" };
   const [totalPrice, setTotalPrice] = useState(0);
