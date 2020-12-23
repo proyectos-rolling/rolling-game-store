@@ -72,7 +72,7 @@ Hay 2 usuarios creados para inciar sesion puedes elegir uno de estos para ingres
 
 Se puede ver una demo funcional del server en https://rolling-game-store.herokuapp.com/
 
-## Deploymet Front
+## Deployment Front
 
 La demo se encuentra deployada usando la funcionalidad de Heroku de integración con un repositorio de github, con deploys automáticos cuando se hace un push a la rama main.
 
