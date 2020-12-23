@@ -85,4 +85,4 @@ _Front_
 * [React Router](https://reactrouter.com/)
 * [React Boostrap](https://react-bootstrap.github.io/)
 * [react-credit-cards](https://www.npmjs.com/package/react-credit-cards)
-* [react-phone-input-2](
+* [react-phone-input-2](https://github.com/bl00mber/react-phone-input-2)
