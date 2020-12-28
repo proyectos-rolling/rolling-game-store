@@ -60,10 +60,10 @@ Hay 2 usuarios creados para inciar sesion puedes elegir uno de estos para ingres
 
 ```json
 {
-  "usuario": "usuario",
+  "usuario": "usuario@email.com",
   "password": "123123"
 },{
-  "usuario": "admin",
+  "usuario": "admin@email.com",
   "password": "123123"
 }
 ```
