@@ -15,6 +15,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./components/css/app.css"
 import * as LS from "./helpers/LSmanager";
+import * as session from "./helpers/sessions";
 import CargaJuegos from "./components/CargaJuegos";
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
     buttonConfirmDelete: "",
     game: {},
   });
-  const [loggedUser, setLoggedUser] = useState(LS.Get("loggedUser")||{name:"",email:"",admin:false});
+  const [loggedUser, setLoggedUser] = useState(session.isUserLogged);
   const root_url = process.env.REACT_APP_API_ROOT_URL;
   const mainSection = { minHeight: "calc(100vh - 68px)" };
   const [totalPrice, setTotalPrice] = useState(0);
